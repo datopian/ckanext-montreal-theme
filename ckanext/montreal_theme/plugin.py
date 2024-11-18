@@ -36,13 +36,19 @@ class MontrealThemePlugin(plugins.SingletonPlugin, DefaultTranslation):
     # ITemplateHelpers
     def get_helpers(self):
         return {
+            'is_editor_header':h.is_user_editor_no_arg,
+            'is_editor':h.is_user_editor,
+            'organization_info': h.get_organization_info_for_user,
             'all_organizations': h.get_all_organizations,
+            'montreal_get_groups': h.get_groups,
             'all_groups': h.get_all_groups,
             'latest_datasets': h.get_latest_datasets,
             'get_showcases': h.get_showcases,
             'get_value_from_showcase_extras': h.get_value_from_showcase_extras,
             'homepage_search_configs': h.homepage_search_configs,
             'format_size': h.format_size,
+            'teritories_string': h.teritories_string,
+            'get_google_tag': h.get_google_tag,
         }
 
     # IFacets
