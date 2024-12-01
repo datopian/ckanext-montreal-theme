@@ -41,8 +41,28 @@
 }
 
 /* Montreal theme */
-.bg-transparent {
-  background-color: transparent !important;
+.text-dark{
+  color:#212529
+}
+.wide-container {
+  padding: 0 15px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .container {
+      max-width: 1280px!important;
+  }
+}
+
+.montreal-theme .dropdown-menu-right{
+  left:auto!important
+}
+
+.h-fit{
+  height: fit-content;
+  width: fit-content;
 }
 
 /*header top navigation / lang switcher*/
@@ -63,6 +83,10 @@
   min-width: 140px;
 }
 
+.navbar-lang-switcher .dropdown-menu .dropdown-item.active {
+  font-weight: 600;
+}
+
 .go-to-montreal {
   color: #212529 !important;
   text-decoration: none !important;
@@ -77,7 +101,6 @@
 
 .app-mega-menu {
   position: static !important;
-
 }
 .app-mega-menu .dropdown-menu {
   width: 100%;
@@ -95,7 +118,7 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  margin-bottom: 24px;
+  margin-bottom: 35px;
 }
 
 .app-mega-menu .submenu-title {
@@ -117,16 +140,21 @@
   text-decoration-skip-ink: none;
   color: #637381;
 }
-
+.app-mega-menu ul {
+  padding: 0;
+}
 .app-mega-menu ul > li:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.app-mega-menu ul li a:hover,
+.app-mega-menu ul li a:hover span {
+  color: #097d6c !important;
 }
 
 .app-mega-menu .menu-highlight {
   background: whitesmoke;
 }
-
-
 
 @media (min-width: 992px) {
   .app-mega-menu .inner {
@@ -146,3 +174,25 @@
   background-color: #f8f9fa;
 }
 
+.montreal-theme .navbar-lang-switcher {
+  padding-right: 0;
+}
+
+.nav-admin .instance {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: white;
+}
+
+
+/* hero search */
+.montreal-hero .form-group{
+  max-width: 50%;;
+  width: 100%;
+}
+.form-control+.icon.icon-search{
+  width: 40px;
+}

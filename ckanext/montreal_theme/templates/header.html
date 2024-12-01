@@ -8,306 +8,40 @@
     {% endif %}
 
     {% if g.userobj.sysadmin or isEditor %}
-      <nav class="nav-admin font-open-sans bg-dark">
-        {% if "dev" in config.get('ckan.site_url') %}
-          {% set loc_fr = "développement" %}
-          {% set loc_en = "developement" %}
-        {% else %}
-          {% set loc_fr = "production" %}
-          {% set loc_en = "production" %}
-        {% endif %}
-
-        {% if current_lang == 'fr' %}
-          <span class="nav-admin-welcome">Bienvenue,
-            <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
-              <span class="border-dotted border-b border-gray-600 font-open-sans name-uppercase text-white font-bold text-nav-name">{{ c.userobj.display_name }}.</span>
-            </a>
-            Vous êtes sur l'instance de <strong style="font-weight: bold;">{{ loc_fr }}.</strong>
-          </span>
-        {% else %}
-          <span class="nav-admin-welcome">Welcome,
-            <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
-              <span class="border-dotted border-b border-gray-600 font-open-sans name-uppercase text-white font-bold text-nav-name">{{ c.userobj.display_name }}.</span>
-            </a>
-            You are on the instance of <strong style="font-weight: bold;">{{ loc_en }}.</strong>
-          </span>
-        {% endif %}
-      </nav>
+      {% include "navigation/user-nav.html" %}
+    {% else %}
+      {% include "navigation/top-nav.html" %}
     {% endif %}
 
-    {% include "parts/top-navigation.html" %}
+    
 
     {% block header_logo %}
       <header class="mx-auto w-full" style="border-bottom: 1px solid #ced4da;">
-        <div class="nav-items-flex py-2 px-5 border-neutral-underground-1" style="border-bottom: 1px solid #CED4DA">
-          {% if g.site_logo %}
-            <div class="nav-logo-title">
-              <a class="logo inline-block" href="{{ h.url_for('home.index') }}" class="">
-                <img class="block" src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" style="min-width: 40px;" />
-              </a>
-              <div class="mx-4 h-4 nav-line-changed border-gray-400"></div>
-              <div class="text-black font-bold" style="white-space: nowrap;">{{ _('Données ouvertes') }}</div>
-            </div>
-          {% else %}
-            <h1>
-              <a href="{{ h.url_for('home.index') }}">{{ g.site_title }}</a>
-            </h1>
-            {% if g.site_description %}
-              <h2>{{ g.site_description }}</h2>
+        <div class=" py-2 border-neutral-underground-1 " style="border-bottom: 1px solid #CED4DA">
+          <div class="wide-container nav-items-flex">
+            {% if g.site_logo %}
+              <div class="nav-logo-title">
+                <a class="logo inline-block" href="{{ h.url_for('home.index') }}" class="">
+                  <img class="block" src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" style="min-width: 40px;" />
+                </a>
+                <div class="mx-4 h-4 nav-line-changed border-gray-400"></div>
+                <div class="text-black font-bold" style="white-space: nowrap;">{{ _('Données ouvertes') }}</div>
+              </div>
+            {% else %}
+              <h1>
+                <a href="{{ h.url_for('home.index') }}">{{ g.site_title }}</a>
+              </h1>
+              {% if g.site_description %}
+                <h2>{{ g.site_description }}</h2>
+              {% endif %}
             {% endif %}
-          {% endif %}
-          {% if g.userobj is not none %}
-            {% set isEditor = h.is_editor_header() %}
-          {% endif %}
+            {% if g.userobj is not none %}
+              {% set isEditor = h.is_editor_header() %}
+            {% endif %}
+          </div>
         </div>
         <div>
-
-          {% if g.userobj.sysadmin or isEditor %}
-            <nav class="flex items-right px-5">
-              <div class="flex gap-2 font-open-sans text-base items-center mx-auto" style="text-align:center;">
-                <a href="/dataset" title="{{ _('Sysadmin settings') }}" class="main-menu-item pl-0 pt-2 pr-2 pb-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Data') }}</span>
-                </a>
-                <a href="/pages" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Pages') }}</span>
-                </a>
-                <a href="{{ h.url_for('pages.blog_index') }}" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('News') }}</span>
-                </a>
-                <a href="{{ h.url_for('organization.index') }}" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Organizations') }}</span>
-                </a>
-                <a href="{{ h.url_for('group.index') }}" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Groups') }}</span>
-                </a>
-                <a href="{{ h.url_for('showcase_blueprint.index') }}" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Applications') }}</span>
-                </a>
-                {% if g.userobj.sysadmin %}
-                  <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}" class="main-menu-item p-2">
-                    <span class="text-dark font-bold hover:text-dark">{{ _('Admin') }}</span>
-                  </a>
-                {% endif %}
-                <a class="nav-logout ml-auto" href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}" class="main-menu-item p-2">
-                  <span class="text-dark font-bold hover:text-dark">{{ _('Logout') }}</span>
-                  <svg class="fill-current w-6 h-6 hover:rounded hover:bg-sarcelle-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="icon">
-                    <path fill-rule="evenodd" d="M21.927 11.624a1 1 0 01-.22 1.083l-5 5a1 1 0 01-1.414-1.414L18.586 13H8a1 1 0 010-2h13a1 1 0 01.921.61l.006.014zm-6.634-3.917a1 1 0 111.414-1.414l2.035 2.035a1 1 0 11-1.414 1.414l-2.035-2.035zM11 21a1 1 0 010 2H5a3 3 0 01-3-3V4a3 3 0 013-3h6a1 1 0 010 2H5a1 1 0 00-1 1v16a1 1 0 001 1h6z"></path>
-                  </svg>
-                </a>
-              </div>
-            </nav>
-          {% else %}
-					<nav class="px-5">
-						<div class="font-open-sans text-base" >
-							<ul class="d-flex align-items-center flex gap-3 mb-0 pl-0">
-								<li>
-									<a href="#" class="pl-0 pt-2 pr-2 pb-2 block">
-										{{_('Accueil')}}
-									</a>
-								</li>
-								<li class="dropdown app-mega-menu">
-									<a href="#" class="dropdown-toggle p-2 block"  data-toggle="dropdown" role="button" aria-expanded="false">
-										{{_('Données')}} <span class="caret"></span>
-									</a>
-									<div class="dropdown-menu mt-0">
-										<div class="inner py-lg-4">
-											<div class="row">
-												<div class="col-8">
-													<h3 class="d-flex flex-row items-center gap-3 menu-description">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path fill-rule="evenodd" clip-rule="evenodd" d="M1.80001 3C2.13138 3 2.40001 3.26863 2.40001 3.6V19.8H3.60001V10.8C3.60001 10.4686 3.86864 10.2 4.20001 10.2H7.80001C8.13138 10.2 8.40001 10.4686 8.40001 10.8V19.8H9.60001V6C9.60001 5.66863 9.86864 5.4 10.2 5.4H12C12.3314 5.4 12.6 5.66863 12.6 6C12.6 6.33137 12.3314 6.6 12 6.6H10.8V19.8H13.2V7.8C13.2 7.46863 13.4686 7.2 13.8 7.2C14.1314 7.2 14.4 7.46863 14.4 7.8V19.8H15.6V13.2C15.6 12.8686 15.8686 12.6 16.2 12.6H19.8C20.1314 12.6 20.4 12.8686 20.4 13.2V19.8H22.2C22.5314 19.8 22.8 20.0686 22.8 20.4C22.8 20.7314 22.5314 21 22.2 21H19.8H16.2H13.8H10.2H7.80001H4.20001H1.80001C1.46864 21 1.20001 20.7314 1.20001 20.4V3.6C1.20001 3.26863 1.46864 3 1.80001 3ZM19.2 19.8H16.8V13.8H19.2V19.8ZM7.20001 19.8H4.80001V11.4H7.20001V19.8ZM13.8 6.6C14.1314 6.6 14.4 6.33137 14.4 6C14.4 5.66863 14.1314 5.4 13.8 5.4C13.4686 5.4 13.2 5.66863 13.2 6C13.2 6.33137 13.4686 6.6 13.8 6.6Z" fill="#ADB2BD"/>
-														</svg>
-														<span>{{_("Catalogue")}}</span>
-													</h3>
-													<div class="row">
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par catégories")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par organisations")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par thématiques")}}</span>
-																		<span class="submenu-description block">{{"Semper vivamus ipsum mi cras tristique consequat pellentesque. In mauris etiam sit vulputate vulputate arcu feugiat ut."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par applications")}}</span>
-																		<span class="submenu-description block">{{"Lorem ipsum dolor sit amet consectetur"}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-												
-													</div>
-												</div>
-												<div class="col-4">
-													<div class="encart encart-light">
-														<h4 class="encart-title">{{_("Recherche")}}</h4>
-														<div class="encart-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis leo ut arcu viverra scelerisque vel nec justo. Sed ac viverra lorem non.</p>
-																<div class="btn-wrapper">
-																		<a class="btn btn-secondary btn-squared bg-transparent" href="#">{{_("Parcourir tous les jeux")}}</a>
-																</div>
-														</div>
-												</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="#" class=" p-2 block">{{_("Actualités")}}</a>
-								</li>
-								<li class="dropdown app-mega-menu">
-									<a href="#" class="dropdown-toggle p-2 block"  data-toggle="dropdown" role="button" aria-expanded="false">
-										{{_('Ressources')}} <span class="caret"></span>
-									</a>
-									<div class="dropdown-menu mt-0">
-										<div class="inner py-lg-4">
-											<div class="row">
-												<div class="col-8">
-													<h3 class="d-flex flex-row items-center gap-3 menu-description">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path fill-rule="evenodd" clip-rule="evenodd" d="M1.80001 3C2.13138 3 2.40001 3.26863 2.40001 3.6V19.8H3.60001V10.8C3.60001 10.4686 3.86864 10.2 4.20001 10.2H7.80001C8.13138 10.2 8.40001 10.4686 8.40001 10.8V19.8H9.60001V6C9.60001 5.66863 9.86864 5.4 10.2 5.4H12C12.3314 5.4 12.6 5.66863 12.6 6C12.6 6.33137 12.3314 6.6 12 6.6H10.8V19.8H13.2V7.8C13.2 7.46863 13.4686 7.2 13.8 7.2C14.1314 7.2 14.4 7.46863 14.4 7.8V19.8H15.6V13.2C15.6 12.8686 15.8686 12.6 16.2 12.6H19.8C20.1314 12.6 20.4 12.8686 20.4 13.2V19.8H22.2C22.5314 19.8 22.8 20.0686 22.8 20.4C22.8 20.7314 22.5314 21 22.2 21H19.8H16.2H13.8H10.2H7.80001H4.20001H1.80001C1.46864 21 1.20001 20.7314 1.20001 20.4V3.6C1.20001 3.26863 1.46864 3 1.80001 3ZM19.2 19.8H16.8V13.8H19.2V19.8ZM7.20001 19.8H4.80001V11.4H7.20001V19.8ZM13.8 6.6C14.1314 6.6 14.4 6.33137 14.4 6C14.4 5.66863 14.1314 5.4 13.8 5.4C13.4686 5.4 13.2 5.66863 13.2 6C13.2 6.33137 13.4686 6.6 13.8 6.6Z" fill="#ADB2BD"/>
-														</svg>
-														<span>{{_("Catalogue")}}</span>
-													</h3>
-													<div class="row">
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par catégories")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par organisations")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par thématiques")}}</span>
-																		<span class="submenu-description block">{{"Semper vivamus ipsum mi cras tristique consequat pellentesque. In mauris etiam sit vulputate vulputate arcu feugiat ut."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par applications")}}</span>
-																		<span class="submenu-description block">{{"Lorem ipsum dolor sit amet consectetur"}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-												
-													</div>
-												</div>
-												<div class="col-4">
-													<div class="encart encart-light">
-														<h4 class="encart-title">{{_("Recherche")}}</h4>
-														<div class="encart-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis leo ut arcu viverra scelerisque vel nec justo. Sed ac viverra lorem non.</p>
-																<div class="btn-wrapper">
-																		<a class="btn btn-secondary btn-squared bg-transparent" href="#">{{_("Parcourir tous les jeux")}}</a>
-																</div>
-														</div>
-												</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="/applications" class="p-2">{{_("Applications")}}</a>
-								</li>
-								<li class="dropdown app-mega-menu">
-									<a href="#" class="dropdown-toggle p-2 block"  data-toggle="dropdown" role="button" aria-expanded="false">
-										{{_('À propos')}} <span class="caret"></span>
-									</a>
-									<div class="dropdown-menu mt-0">
-										<div class="inner py-lg-4">
-											<div class="row">
-												<div class="col-8">
-													<h3 class="d-flex flex-row items-center gap-3 menu-description">
-														<i class="icon-info"></i>
-														<span>{{_("Catalogue")}}</span>
-													</h3>
-													<div class="row">
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par catégories")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par organisations")}}</span>
-																		<span class="submenu-description block">{{"Sit odio adipiscing dolor mus commodo pulvinar hendrerit id."}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="col">
-															<ul>
-																<li>
-																	<a href="/dataset">
-																		<span class="submenu-title block">{{_("Par thématiques")}}</span>
-																		<span class="submenu-description block">{{"Semper vivamus ipsum mi cras tristique consequat pellentesque. In mauris etiam sit vulputate vulputate arcu feugiat ut."}}</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<span class="submenu-title block">{{_("Par applications")}}</span>
-																		<span class="submenu-description block">{{"Lorem ipsum dolor sit amet consectetur"}}</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-												
-													</div>
-												</div>
-												<div class="col-4">
-													<div class="encart encart-light">
-														<h4 class="encart-title">{{_("Recherche")}}</h4>
-														<div class="encart-body">
-																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis leo ut arcu viverra scelerisque vel nec justo. Sed ac viverra lorem non.</p>
-																<div class="btn-wrapper">
-																		<a class="btn btn-secondary btn-squared bg-transparent" href="#">{{_("Parcourir tous les jeux")}}</a>
-																</div>
-														</div>
-												</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</nav>
-          {% endif %}
+          {% include "navigation/main-menu.html" %}
         </div>
       </header>
     {% endblock %}

@@ -1,8 +1,9 @@
-<div class="d-flex align-items-center bg-neutral-underground-1 px-5 border-bottom">
+<div class=" bg-neutral-underground-1 ">
+  <div class="wide-container d-flex align-items-center">
     <a href="https://montreal.ca" class="flex is-external-link link-xs go-to-montreal d-flex align-items-center" >
         montreal.ca
     </a>
-    <div class="navbar-lang-switcher d-flex bg-transparent ml-auto">
+    <div class="navbar-lang-switcher d-flex bg-transparent ml-auto position-relative">
       <button class=" btn btn-lang text-dark" type="button" data-toggle="dropdown" id="lang-dropdown" aria-haspopup="true" aria-expanded="false">
         {{ _('Langue') }}
         <span class="caret"></span>
@@ -12,5 +13,5 @@
         <a class="dropdown-item {% if current_lang == 'en' %}active{% endif %}" href="/en">{{ _('English') }}</a>
       </div>
     </div>
-  
+    </div>
   </div>
