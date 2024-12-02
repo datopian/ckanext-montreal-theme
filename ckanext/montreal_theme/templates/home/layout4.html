@@ -1,10 +1,16 @@
 <!-- This file keeps the new layout of the homepage -->
+{% import "components.html" as components %}
 
 {% set current_lang = request.environ.CKAN_LANG %}
 
 <div id="main-container z-10" class="">
-  {% snippet 'home/snippets/hero_home.html' %} {# <------------- Our data
-  Section -------------> #}
+  
+  {{ components.page_hero(
+    _("Home Page Hero Title"), 
+    _("Tellus tortor vel netus tortor. Tellus mauris nunc duis sagittis tellus turpis cursus nisl sit. Nulla vitae magnis nunc adipiscing tortor eu sagittis. "),
+    "home-hero"
+  )}}
+
   <div>
     <section class="flex flex-col mx-auto container pt-16">
       <div data-title="our-data">

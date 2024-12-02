@@ -1,4 +1,6 @@
-<section class="montreal-theme montreal-hero">
+{% macro page_hero(title, description, class) %}
+
+<section class="montreal-theme montreal-hero {{class}}">
   <div
     class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
   >
@@ -6,11 +8,9 @@
       <div class="row document-heading-header">
         <div class="col-12 col-lg-7">
           <div class="pb-2">
-            <h1 class="h1">{{_("Home Page Hero Title")}}</h1>
+            <h1 class="h1">{{title}}</h1>
             <div class="document-heading-subtitle">
-              Tellus tortor vel netus tortor. Tellus mauris nunc duis sagittis
-              tellus turpis cursus nisl sit. Nulla vitae magnis nunc adipiscing
-              tortor eu sagittis.
+             {{description}}
             </div>
           </div>
         </div>
@@ -36,13 +36,13 @@
                   <label for="form-control-default-one">{{_("Type")}}</label>
                   <select
                     class="custom-select"
-                    name=""
+                   
                     id=""
                     required
                   >
-                    <option value="option-1">{{_("Datasets")}}</option>
-                    <option value="option-2">{{_("News")}}</option>
-                    <option value="option-2">{{_("Applications")}}</option>
+                    <option value="{% url_for 'dataset.search' %}">{{_("Datasets")}}</option>
+                    <option value="/blog">{{_("News")}}</option>
+                    <option value="{% url_for 'showcase.search' %}">{{_("Applications")}}</option>
                   </select>
                 </div>
               </div>
@@ -62,3 +62,21 @@
     </div>
   </div>
 </section>
+
+<script>
+
+(function(){
+  const heroComponent = document.querySelector(".montreal-hero.{{class}}");
+  const form = heroComponent.querySelector("form");
+  const typeSelector = form.querySelector("select");
+
+  typeSelector.addEventListener('change', function () {
+    const selectedValue = this.value;
+    form.action =selectedValue  
+  });
+
+})();
+
+</script>
+{% endmacro %}
+
