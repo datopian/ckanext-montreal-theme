@@ -196,3 +196,16 @@
 .form-control+.icon.icon-search{
   width: 40px;
 }
+
+
+/*home news section*/
+.news-title{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+
