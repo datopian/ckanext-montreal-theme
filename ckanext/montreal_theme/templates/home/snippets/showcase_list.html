@@ -1,6 +1,6 @@
 
 {% if showcases %}
-    {% for showcase in showcases %}
+    {% for showcase in showcases[0:3] %}
         {% snippet 'home/snippets/applications.html', showcase=showcase, item_class=item_class, truncate=truncate, truncate_title=60, show_remove=show_remove %}
     {% endfor %}
 {% endif %}
