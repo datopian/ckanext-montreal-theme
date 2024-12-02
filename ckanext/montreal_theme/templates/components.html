@@ -1,4 +1,6 @@
-{% macro page_hero(title, description, class) %}
+{% macro page_hero(title, description, searchOption , class) %}
+
+{% set selectedSearchOption = searchOption if searchOption else url_for('dataset.search') %}
 
 <section class="montreal-theme montreal-hero {{class}}">
   <div
@@ -15,7 +17,7 @@
           </div>
         </div>
         <div class="col-12">
-          <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{% url_for 'dataset.search' %}" class="bg-white p-2 mb-0">
+          <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{{selectedSearchOption}}" class="bg-white p-2 mb-0">
             <div class="d-flex w-100 gap-4 align-items-end">
               <div class="d-flex gap-4 w-100">
                 <div class="form-group mb-0">
@@ -31,18 +33,23 @@
                     />
                     <span class="icon icon-search" aria-hidden="true"></span>
                   </div>
+
                 </div>
                 <div class="form-group mb-0">
                   <label for="form-control-default-one">{{_("Type")}}</label>
-                  <select
-                    class="custom-select"
-                   
-                    id=""
-                    required
-                  >
-                    <option value="{% url_for 'dataset.search' %}">{{_("Datasets")}}</option>
-                    <option value="/blog">{{_("News")}}</option>
-                    <option value="{% url_for 'showcase.search' %}">{{_("Applications")}}</option>
+                  <select class="custom-select" id="" required>
+                    <option value="{{ url_for('dataset.search') }}" 
+                      {% if selectedSearchOption == url_for('dataset.search') %} selected {% endif %}>
+                      {{ _("Datasets") }}
+                    </option>
+                    <option value="/blog" 
+                      {% if selectedSearchOption == '/blog' %} selected {% endif %}>
+                      {{ _("News") }}
+                    </option>
+                    <option value="{{ url_for('showcase.search') }}" 
+                      {% if selectedSearchOption == url_for('showcase.search') %} selected {% endif %}>
+                      {{ _("Applications") }}
+                    </option>
                   </select>
                 </div>
               </div>
