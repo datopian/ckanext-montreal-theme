@@ -1,82 +1,132 @@
 {% macro page_hero(title, description, class) %}
-
-<section class="montreal-theme montreal-hero {{class}}">
-  <div
-    class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
-  >
-    <div class="container position-relative">
-      <div class="row document-heading-header">
-        <div class="col-12 col-lg-7">
-          <div class="pb-2">
-            <h1 class="h1">{{title}}</h1>
-            <div class="document-heading-subtitle">
-             {{description}}
+  <section class="montreal-theme montreal-hero {{class}}">
+    <div
+      class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
+    >
+      <div class="container position-relative">
+        <div class="row document-heading-header">
+          <div class="col-12 col-lg-7">
+            <div class="pb-2">
+              <h1 class="h1">{{title}}</h1>
+              <div class="document-heading-subtitle">
+              {{description}}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12">
-          <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{% url_for 'dataset.search' %}" class="bg-white p-2 mb-0">
-            <div class="d-flex w-100 gap-4 align-items-end">
-              <div class="d-flex gap-4 w-100">
-                <div class="form-group mb-0">
-                  <label for="form-control-default-one">{{_("Recherche")}}</label>
-                  <div class="input-group-icon input-group-icon-left">
-                    <input
-                      name="q" 
-                      value="{{ query }}"
-                      type="text"
-                      class="form-control"
-                      id="form-control-searchbar"
-                      placeholder=""
-                    />
-                    <span class="icon icon-search" aria-hidden="true"></span>
+          <div class="col-12">
+            <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{% url_for 'dataset.search' %}" class="bg-white p-2 mb-0">
+              <div class="d-flex w-100 gap-4 align-items-end">
+                <div class="d-flex gap-4 w-100">
+                  <div class="form-group mb-0">
+                    <label for="form-control-default-one">{{_("Recherche")}}</label>
+                    <div class="input-group-icon input-group-icon-left">
+                      <input
+                        name="q" 
+                        value="{{ query }}"
+                        type="text"
+                        class="form-control"
+                        id="form-control-searchbar"
+                        placeholder=""
+                      />
+                      <span class="icon icon-search" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0">
+                    <label for="form-control-default-one">{{_("Type")}}</label>
+                    <select
+                      class="custom-select"
+                    
+                      id=""
+                      required
+                    >
+                      <option value="{% url_for 'dataset.search' %}">{{_("Datasets")}}</option>
+                      <option value="{% url_for 'showcase.search' %}">{{_("Applications")}}</option>
+                      <option value="/blog">{{_("News")}}</option>
+                      
+                    </select>
                   </div>
                 </div>
-                <div class="form-group mb-0">
-                  <label for="form-control-default-one">{{_("Type")}}</label>
-                  <select
-                    class="custom-select"
-                   
-                    id=""
-                    required
-                  >
-                    <option value="{% url_for 'dataset.search' %}">{{_("Datasets")}}</option>
-                    <option value="/blog">{{_("News")}}</option>
-                    <option value="{% url_for 'showcase.search' %}">{{_("Applications")}}</option>
-                  </select>
+                <div class="ml-auto w-fit d-flex gap-1 h-fit" >
+                  <button type="reset" class="btn btn-link btn-squared">
+                    {{_("Effacer")}}
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-squared">
+                    {{_("Rechercher")}}
+                  </button>
                 </div>
               </div>
-              <div class="ml-auto w-fit d-flex gap-1 h-fit" >
-                <button type="reset" class="btn btn-link btn-squared">
-                  {{_("Effacer")}}
-                </button>
-                <button type="submit" class="btn btn-primary btn-squared">
-                  {{_("Rechercher")}}
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
+        <div class="row"></div>
       </div>
-      <div class="row"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
+  <script>
+    (function(){
+      const heroComponent = document.querySelector(".montreal-hero.{{class}}");
+      const form = heroComponent.querySelector("form");
+      const typeSelector = form.querySelector("select");
 
-(function(){
-  const heroComponent = document.querySelector(".montreal-hero.{{class}}");
-  const form = heroComponent.querySelector("form");
-  const typeSelector = form.querySelector("select");
-
-  typeSelector.addEventListener('change', function () {
-    const selectedValue = this.value;
-    form.action =selectedValue  
-  });
-
-})();
-
-</script>
+      typeSelector.addEventListener('change', function () {
+        const selectedValue = this.value;
+        form.action =selectedValue  
+      });
+    })();
+  </script>
 {% endmacro %}
 
+{% macro search_bar() %}
+<div class="montreal-searchbar">
+  
+  <form class="m-0" action="/dataset">
+    <button type="button" class="btn btn-squared btn-icon-left py-0 pr-0" >
+      <span class="icon icon-search" aria-hidden="true"></span>
+      <span class="btn-label">{{_("Rechercher")}}</span>
+    </button>
+    <div class="form-group montreal-input-container flex gap-0 m-0 hidden items-center gap-3">
+      <div class="flex items-center mb-0">
+        <div class="input-group-icon input-group-icon-left m-0">
+          <input type="text" class="form-control rounded-0" name="q" placeholder="" >
+          <span class="icon icon-search" aria-hidden="true"></span>
+        </div>
+        <select class="form-control rounded-0 m-0">
+          <option value="/dataset">{{_("Datasets")}}</option>
+          <option value="/showcase">{{_("Applications")}}</option>
+          <option value="/blog">{{_("News")}}</option>
+        </select>
+      </div>
+      <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close">
+        <i class="icon icon-x text-dark"></i>
+      </span> 
+    </div>
+  </form>
+</div>
+<script>
+  (function(){
+    const searchBar = document.querySelector(".montreal-searchbar");
+    const form = searchBar.querySelector("form");
+    const button = searchBar.querySelector("button");
+    const inputContainer = searchBar.querySelector(".montreal-input-container");
+    const typeSelector = form.querySelector("select");
+    const closeSearch = form.querySelector(".montreal-searchbar-close");
+    
+    button.addEventListener("click", ()=>{
+      button.classList.add("hidden");
+      inputContainer.classList.remove("hidden")
+    });
+
+    closeSearch.addEventListener("click", ()=>{
+      button.classList.remove("hidden");
+      inputContainer.classList.add("hidden")
+    });
+
+    typeSelector.addEventListener('change', function () {
+      const selectedValue = this.value;
+      form.action =selectedValue  
+    });
+
+  })();
+</script>
+{% endmacro %}

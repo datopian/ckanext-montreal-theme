@@ -209,3 +209,20 @@
 }
 
 
+
+/*searchbar*/
+.montreal-theme .montreal-searchbar .btn .icon{
+  width: 24px;
+}
+.montreal-theme .montreal-searchbar .btn .icon:before{
+  background-color: #212529;
+  width: 24px;
+}
+
+.montreal-theme .montreal-searchbar input{
+  width: 300px;
+}
+
+.montreal-searchbar .btn-label{
+  color:#212529
+}
