@@ -23,6 +23,10 @@
   {# The content block allows you to replace the content of the page if needed #}
   {%- block content %}
     {% block maintag %}<div class="main-container z-10">{% endblock %}
+      {% block page_hero %}
+
+      {% endblock %}
+
       <section id="content" class="font-open-sans leading-relaxed container">
         {% block section %}
           {% block flash %}

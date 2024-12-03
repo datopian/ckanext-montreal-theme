@@ -1,58 +1,56 @@
-{% macro page_hero(title, description, class) %}
-  <section class="montreal-theme montreal-hero {{class}}">
-    <div
-      class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
-    >
-      <div class="container position-relative">
-        <div class="row document-heading-header">
-          <div class="col-12 col-lg-7">
-            <div class="pb-2">
-              <h1 class="h1">{{title}}</h1>
-              <div class="document-heading-subtitle">
-              {{description}}
-              </div>
+{% macro page_hero(title, description, searchOption , class) %}
+
+{% set selectedSearchOption = searchOption if searchOption else url_for('dataset.search') %}
+
+<section class="montreal-theme montreal-hero {{class}}">
+  <div
+    class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
+  >
+    <div class="container position-relative">
+      <div class="row document-heading-header">
+        <div class="col-12 col-lg-7">
+          <div class="pb-2">
+            <h1 class="h1">{{title}}</h1>
+            <div class="document-heading-subtitle">
+             {{description}}
             </div>
           </div>
-          <div class="col-12">
-            <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{% url_for 'dataset.search' %}" class="bg-white p-2 mb-0">
-              <div class="d-flex w-100 gap-4 align-items-end">
-                <div class="d-flex gap-4 w-100">
-                  <div class="form-group mb-0">
-                    <label for="form-control-default-one">{{_("Recherche")}}</label>
-                    <div class="input-group-icon input-group-icon-left">
-                      <input
-                        name="q" 
-                        value="{{ query }}"
-                        type="text"
-                        class="form-control"
-                        id="form-control-searchbar"
-                        placeholder=""
-                      />
-                      <span class="icon icon-search" aria-hidden="true"></span>
-                    </div>
+        </div>
+        <div class="col-12">
+          <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{{selectedSearchOption}}" class="bg-white p-2 mb-0">
+            <div class="d-flex w-100 gap-4 align-items-end">
+              <div class="d-flex gap-4 w-100">
+                <div class="form-group mb-0">
+                  <label for="form-control-default-one">{{_("Recherche")}}</label>
+                  <div class="input-group-icon input-group-icon-left">
+                    <input
+                      name="q" 
+                      value="{{ query }}"
+                      type="text"
+                      class="form-control"
+                      id="form-control-searchbar"
+                      placeholder=""
+                    />
+                    <span class="icon icon-search" aria-hidden="true"></span>
                   </div>
-                  <div class="form-group mb-0">
-                    <label for="form-control-default-one">{{_("Type")}}</label>
-                    <select
-                      class="custom-select"
-                    
-                      id=""
-                      required
-                    >
-                      <option value="{% url_for 'dataset.search' %}">{{_("Datasets")}}</option>
-                      <option value="{% url_for 'showcase.search' %}">{{_("Applications")}}</option>
-                      <option value="/blog">{{_("News")}}</option>
-                      
-                    </select>
-                  </div>
+
                 </div>
-                <div class="ml-auto w-fit d-flex gap-1 h-fit" >
-                  <button type="reset" class="btn btn-link btn-squared">
-                    {{_("Effacer")}}
-                  </button>
-                  <button type="submit" class="btn btn-primary btn-squared">
-                    {{_("Rechercher")}}
-                  </button>
+                <div class="form-group mb-0">
+                  <label for="form-control-default-one">{{_("Type")}}</label>
+                  <select class="custom-select" id="" required>
+                    <option value="{{ url_for('dataset.search') }}" 
+                      {% if selectedSearchOption == url_for('dataset.search') %} selected {% endif %}>
+                      {{ _("Datasets") }}
+                    </option>
+                    <option value="/blog" 
+                      {% if selectedSearchOption == '/blog' %} selected {% endif %}>
+                      {{ _("News") }}
+                    </option>
+                    <option value="{{ url_for('showcase.search') }}" 
+                      {% if selectedSearchOption == url_for('showcase.search') %} selected {% endif %}>
+                      {{ _("Applications") }}
+                    </option>
+                  </select>
                 </div>
               </div>
             </form>
