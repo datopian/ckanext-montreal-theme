@@ -1,3 +1,4 @@
+<div class="">
 {% if g.userobj is not none %}
   {% set isEditor = h.is_editor_header() %}
 {% endif %}
@@ -9,11 +10,8 @@
 {% elif g.user and isEditor %}
   {% ckan_extends%}
 
-  {% block styles %}
-    {{ super() }}
-
-  {% endblock %}
-
 {% else %}
   {% extends "_page.html" %}
 {% endif %}
+
+</div>
