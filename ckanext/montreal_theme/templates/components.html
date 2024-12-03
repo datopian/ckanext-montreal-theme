@@ -53,37 +53,78 @@
                   </select>
                 </div>
               </div>
-              <div class="ml-auto w-fit d-flex gap-1 h-fit" >
-                <button type="reset" class="btn btn-link btn-squared">
-                  {{_("Effacer")}}
-                </button>
-                <button type="submit" class="btn btn-primary btn-squared">
-                  {{_("Rechercher")}}
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
+        <div class="row"></div>
       </div>
-      <div class="row"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
+  <script>
+    (function(){
+      const heroComponent = document.querySelector(".montreal-hero.{{class}}");
+      const form = heroComponent.querySelector("form");
+      const typeSelector = form.querySelector("select");
 
-(function(){
-  const heroComponent = document.querySelector(".montreal-hero.{{class}}");
-  const form = heroComponent.querySelector("form");
-  const typeSelector = form.querySelector("select");
-
-  typeSelector.addEventListener('change', function () {
-    const selectedValue = this.value;
-    form.action =selectedValue  
-  });
-
-})();
-
-</script>
+      typeSelector.addEventListener('change', function () {
+        const selectedValue = this.value;
+        form.action =selectedValue  
+      });
+    })();
+  </script>
 {% endmacro %}
 
+{% macro search_bar() %}
+<div class="montreal-searchbar">
+  
+  <form class="m-0" action="/dataset">
+    <button type="button" class="btn btn-squared btn-icon-left py-0 pr-0" >
+      <span class="icon icon-search" aria-hidden="true"></span>
+      <span class="btn-label">{{_("Rechercher")}}</span>
+    </button>
+    <div class="form-group montreal-input-container flex gap-0 m-0 hidden items-center gap-3">
+      <div class="flex items-center mb-0">
+        <div class="input-group-icon input-group-icon-left m-0">
+          <input type="text" class="form-control rounded-0" name="q" placeholder="" >
+          <span class="icon icon-search" aria-hidden="true"></span>
+        </div>
+        <select class="form-control rounded-0 m-0">
+          <option value="/dataset">{{_("Datasets")}}</option>
+          <option value="/showcase">{{_("Applications")}}</option>
+          <option value="/blog">{{_("News")}}</option>
+        </select>
+      </div>
+      <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close">
+        <i class="icon icon-x text-dark"></i>
+      </span> 
+    </div>
+  </form>
+</div>
+<script>
+  (function(){
+    const searchBar = document.querySelector(".montreal-searchbar");
+    const form = searchBar.querySelector("form");
+    const button = searchBar.querySelector("button");
+    const inputContainer = searchBar.querySelector(".montreal-input-container");
+    const typeSelector = form.querySelector("select");
+    const closeSearch = form.querySelector(".montreal-searchbar-close");
+    
+    button.addEventListener("click", ()=>{
+      button.classList.add("hidden");
+      inputContainer.classList.remove("hidden")
+    });
+
+    closeSearch.addEventListener("click", ()=>{
+      button.classList.remove("hidden");
+      inputContainer.classList.add("hidden")
+    });
+
+    typeSelector.addEventListener('change', function () {
+      const selectedValue = this.value;
+      form.action =selectedValue  
+    });
+
+  })();
+</script>
+{% endmacro %}

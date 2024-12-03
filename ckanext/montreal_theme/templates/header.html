@@ -1,3 +1,5 @@
+{% import "components.html" as components %}
+
 {% set current_lang = request.environ.CKAN_LANG %}
 
 {% block header_account %}
@@ -24,6 +26,9 @@
                 </a>
                 <div class="mx-4 h-4 nav-line-changed border-gray-400"></div>
                 <div class="text-black font-bold" style="white-space: nowrap;">{{ _('Données ouvertes') }}</div>
+              </div>
+              <div>
+                {{ components.search_bar() }}
               </div>
             {% else %}
               <h1>
