@@ -2,16 +2,14 @@
 
 {% extends 'page.html'%}
 
-
-
-
 {% block page_hero %}
-    {{components.page_hero(
-        _("News"),
-        "",
-        "/blog",
-        "news-hero",
-    )}}
+    {{components.page_hero({
+        "title": _("News"),
+        "description": "",
+        "selectedSearchOption": "/blog",
+        "query": c.q,
+        "class" : "news-hero"
+    })}}
 {% endblock %}
 
 {% block toolbar %}

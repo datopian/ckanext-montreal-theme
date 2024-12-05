@@ -7,12 +7,13 @@
 
 
 {% block page_hero %}
-    {{components.page_hero(
-        _("Applications"),
-        _("Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset."),
-        url_for('showcase.search'),
-        "showcase-hero",
-    )}}
+    {{components.page_hero({
+        "title": _("Applications"),
+        "description": _("Showcases are any app, article or report that relate to the published dataset. For example, an annual report that contains aggregated information relating to the dataset or a website where there is further background information on the dataset or a link to an app that has been created utilising some or all of the dataset."),
+        "selectedSearchOption": url_for('showcase.search'),
+        "query": c.q,
+        "class" : "showcase-hero"
+    })}}
 {% endblock %}
 
 {% block breadcrumb_content %}

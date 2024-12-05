@@ -4,13 +4,14 @@
 {% set current_lang = request.environ.CKAN_LANG %}
 
 <div id="main-container z-10" class="">
-  
-  {{ components.page_hero(
-    _("Home Page Hero Title"), 
-    _("Tellus tortor vel netus tortor. Tellus mauris nunc duis sagittis tellus turpis cursus nisl sit. Nulla vitae magnis nunc adipiscing tortor eu sagittis. "),
-    "",
-    "home-hero"
-  )}}
+
+  {{components.page_hero({
+    "title": _("Home Page Hero Title"),
+    "description": _("Tellus tortor vel netus tortor. Tellus mauris nunc duis sagittis tellus turpis cursus nisl sit. Nulla vitae magnis nunc adipiscing tortor eu sagittis. "),
+    "selectedSearchOption": h.url_for('dataset.search'),
+    "query": "",
+    "class" : "home-hero"
+  })}}
 
   <div>
     <section class="flex flex-col mx-auto container pt-16">
