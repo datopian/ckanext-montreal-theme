@@ -4,14 +4,22 @@
         montreal.ca
     </a>
     <div class="navbar-lang-switcher d-flex bg-transparent ml-auto position-relative">
-      <button class=" btn btn-lang text-dark" type="button" data-toggle="dropdown" id="lang-dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ _('Langue') }}
+      {% if current_lang == 'en' %}
+        <a class="text-dark text-sm py-1" href="/fr">{{ _('Français') }}</a>
+      {% endif %}
+
+      {% if current_lang == 'fr' %}
+        <a class="text-dark text-sm py-1" href="/en">{{ _('English') }}</a>
+      {% endif %}
+      <button class=" btn btn-lang text-dark hidden" type="button" data-toggle="dropdown" id="lang-dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ _('Language') }}
         <span class="caret"></span>
       </button>
       <div class="dropdown-menu" aria-labelledby="lang-dropdown">
         <a class="dropdown-item {% if current_lang == 'fr' %}active{% endif %}" href="/fr">{{ _('French') }}</a>
         <a class="dropdown-item {% if current_lang == 'en' %}active{% endif %}" href="/en">{{ _('English') }}</a>
       </div>
+
     </div>
     </div>
   </div>

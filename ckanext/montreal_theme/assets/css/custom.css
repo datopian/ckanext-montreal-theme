@@ -144,7 +144,7 @@
   padding: 0;
 }
 .app-mega-menu ul > li:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .app-mega-menu ul li a:hover,
