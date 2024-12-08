@@ -1125,9 +1125,26 @@ msgstr "Par applications"
 msgid "By Publisher"
 msgstr "Par publieur"
 
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:51
+msgid "Find a dataset within a specific category (Health, Transportation)"
+msgstr "Trouver un jeu de données en fonction de sa catégorie (Santé, transport...)"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:61
+msgid "Discover data according to the organization who produce it"
+msgstr "Découvrir les données selon son organisation d’origine"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:75
+msgid "See which datasets are used in third-party applications"
+msgstr "Voyez quels jeux de données sont utilisés dans les applications tiers"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:85
+msgid "Browse datasets by publishers"
+msgstr "Parcourir les jeux de données en selon leurs publieurs"
+
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:98
 msgid "Search through donnee.montrel.ca hundreds of datasets."
-msgstr ""
+msgstr "Rechercher à travers des centaines de jeux de données présent sur donnee.montrel.ca"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:104
 msgid "Browse all"
@@ -1159,3 +1176,4 @@ msgstr "Français"
 #: ckanext/montreal_theme/templates/home/layout4.html:9
 msgid "Welcome to Montreal’s open data website"
 msgstr "Bienvenue sur le site des données ouvertes de la ville de Montréal"
+

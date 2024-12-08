@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-montreal-theme 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-07 13:37+0000\n"
+"POT-Creation-Date: 2024-12-08 19:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgid "Type"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/components.html:43
-#: ckanext/montreal_theme/templates/components.html:105
+#: ckanext/montreal_theme/templates/components.html:108
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:39
 #: ckanext/montreal_theme/templates/package/_search.html:9
 msgid "Datasets"
@@ -58,7 +58,7 @@ msgstr ""
 #: ckanext/montreal_theme/templates/ckanext_pages/_blog_list.html:7
 #: ckanext/montreal_theme/templates/ckanext_pages/_blog_list.html:23
 #: ckanext/montreal_theme/templates/components.html:47
-#: ckanext/montreal_theme/templates/components.html:107
+#: ckanext/montreal_theme/templates/components.html:110
 #: ckanext/montreal_theme/templates/footer.html:45
 #: ckanext/montreal_theme/templates/home/layout4.html:58
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:115
@@ -67,7 +67,7 @@ msgid "News"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/components.html:51
-#: ckanext/montreal_theme/templates/components.html:106
+#: ckanext/montreal_theme/templates/components.html:109
 #: ckanext/montreal_theme/templates/footer.html:19
 #: ckanext/montreal_theme/templates/home/layout4.html:73
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:118
@@ -522,12 +522,24 @@ msgstr ""
 msgid "By organizations"
 msgstr ""
 
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:61
+msgid "Discover data according to the organization who produce it"
+msgstr ""
+
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:72
 msgid "By Applications"
 msgstr ""
 
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:75
+msgid "See which datasets are used in third-party applications"
+msgstr ""
+
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:82
 msgid "By Publisher"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:85
+msgid "Browse datasets by publishers"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:98
