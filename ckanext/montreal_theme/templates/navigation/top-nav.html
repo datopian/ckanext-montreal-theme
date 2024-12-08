@@ -4,12 +4,11 @@
         montreal.ca
     </a>
     <div class="navbar-lang-switcher d-flex bg-transparent ml-auto position-relative">
+      {% set current_url = request.full_path %}
       {% if current_lang == 'en' %}
-        <a class="text-dark text-sm py-1" href="/fr">{{ _('Français') }}</a>
-      {% endif %}
-
-      {% if current_lang == 'fr' %}
-        <a class="text-dark text-sm py-1" href="/en">{{ _('English') }}</a>
+          <a class="text-dark text-sm py-1" href="/fr{{ current_url }}">{{ _('Français') }}</a>
+      {% elif current_lang == 'fr' %}
+          <a class="text-dark text-sm py-1" href="/en{{ current_url }}">{{ _('English') }}</a>
       {% endif %}
       <button class=" btn btn-lang text-dark hidden" type="button" data-toggle="dropdown" id="lang-dropdown" aria-haspopup="true" aria-expanded="false">
         {{ _('Language') }}
