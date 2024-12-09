@@ -1,13 +1,22 @@
+{% import "components.html" as components %}
+
 {% extends 'page.html'%}
 
-
-
-{% block subtitle %}{{ _('News') }}{% endblock %}
+{% block page_hero %}
+    {{components.page_hero({
+        "title": _("News"),
+        "description": "",
+        "selectedSearchOption": "/blog",
+        "query": c.q,
+        "class" : "news-hero"
+    })}}
+{% endblock %}
 
 {% block toolbar %}
-<div class="container mx-auto pt-16">
+<div class="mx-auto pt-16">
+    
 {% block breadcrumb_content %}
-    <nav class="breadcrumb px-gutter w-full font-sans font-bold text-gray-ink text-lg"  aria-label="breadcrumb">
+    <nav class="breadcrumb w-full font-sans font-bold text-gray-ink text-lg"  aria-label="breadcrumb">
         <ol class="text-gray-700 font-semibold">
             {% include 'snippets/home_breadcrumb_item.html' %}
             <li class="breadcrumb_item">
@@ -24,8 +33,8 @@
 {{ blogs }}
 
 {% block extra_content %}
-    <div class="container mx-auto p-gutter pt-12">
-        <h1 class="font-semibold text-3xl text-gray-700 mb-1">{{ _("News") }}</h1>
+    <div class="container mx-auto pt-12">
+      
         <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
             {% for blog in blogs %}
             {% set url = h.url_for('pages.blog_show', page=blog.name) %}

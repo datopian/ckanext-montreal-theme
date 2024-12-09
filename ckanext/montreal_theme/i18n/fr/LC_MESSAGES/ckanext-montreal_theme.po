@@ -1052,3 +1052,128 @@ msgstr "Utilisateur verrouillé"
 #: ckan/controllers/user.py:416 ckan/views/user.py:482
 msgid "Login failed. Bad username or password."
 msgstr "Authentification échouée. Mauvais login ou mot de passe."
+
+#: ckanext/montreal_theme/templates/components.html:24
+#: ckanext/montreal_theme/templates/components.html:62
+#: ckanext/montreal_theme/templates/components.html:96
+#: ckanext/montreal_theme/templates/footer.html:16
+#: ckanext/montreal_theme/templates/home/snippets/frontend_search.html:4
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:95
+msgid "Search"
+msgstr "Recherche"
+
+#: ckanext/montreal_theme/templates/components.html:39
+#: ckanext/montreal_theme/templates/related/snippets/related_form.html:15
+msgid "Type"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/components.html:43
+#: ckanext/montreal_theme/templates/components.html:105
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:39
+#: ckanext/montreal_theme/templates/package/_search.html:9
+msgid "Datasets"
+msgstr "Jeux de données"
+
+#: ckanext/montreal_theme/templates/ckanext_pages/_blog.html:10
+#: ckanext/montreal_theme/templates/ckanext_pages/_blog_list.html:7
+#: ckanext/montreal_theme/templates/ckanext_pages/_blog_list.html:23
+#: ckanext/montreal_theme/templates/components.html:47
+#: ckanext/montreal_theme/templates/components.html:107
+#: ckanext/montreal_theme/templates/footer.html:45
+#: ckanext/montreal_theme/templates/home/layout4.html:58
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:115
+#: ckanext/montreal_theme/templates/navigation/user-nav.html:33
+msgid "News"
+msgstr "Nouvelles"
+
+#: ckanext/montreal_theme/templates/components.html:51
+#: ckanext/montreal_theme/templates/components.html:106
+#: ckanext/montreal_theme/templates/footer.html:19
+#: ckanext/montreal_theme/templates/home/layout4.html:73
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:118
+#: ckanext/montreal_theme/templates/navigation/user-nav.html:42
+#: ckanext/montreal_theme/templates/showcase/_read.html:13
+#: ckanext/montreal_theme/templates/showcase/_search.html:11
+#: ckanext/montreal_theme/templates/showcase/_search.html:23
+msgid "Applications"
+msgstr "Applications"
+
+#: ckanext/montreal_theme/templates/components.html:59
+msgid "Erase"
+msgstr "Effacer"
+
+
+
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:48
+msgid "By categories"
+msgstr "Par catégories"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:51
+msgid "Find a dataset within a specific category (Health, Transportation,...)"
+msgstr "Trouver un jeu de données en fonction de sa catégorie (Santé, transport...)"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:58
+msgid "By organizations"
+msgstr "Par organisations"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:72
+msgid "By Applications"
+msgstr "Par applications"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:82
+msgid "By Publisher"
+msgstr "Par publieur"
+
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:51
+msgid "Find a dataset within a specific category (Health, Transportation)"
+msgstr "Trouver un jeu de données en fonction de sa catégorie (Santé, transport...)"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:61
+msgid "Discover data according to the organization who produce it"
+msgstr "Découvrir les données selon son organisation d’origine"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:75
+msgid "See which datasets are used in third-party applications"
+msgstr "Voyez quels jeux de données sont utilisés dans les applications tiers"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:85
+msgid "Browse datasets by publishers"
+msgstr "Parcourir les jeux de données en selon leurs publieurs"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:98
+msgid "Search through donnee.montrel.ca hundreds of datasets."
+msgstr "Rechercher à travers des centaines de jeux de données présent sur donnee.montrel.ca"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:104
+msgid "Browse all"
+msgstr "Parcourir tous les jeux"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:160
+msgid "Sitemap"
+msgstr "Plan de site"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:174
+msgid ""
+"Please contact us regarding any comment, question, request or problem "
+"regarding our open data."
+msgstr "Poser une question ou contacter un membre de l’équipe des données ouvertes"
+
+#: ckanext/montreal_theme/templates/navigation/main-menu.html:180
+msgid "Contact Form"
+msgstr "Remplir le formulaire"
+
+#: ckanext/montreal_theme/templates/navigation/top-nav.html:15
+msgid "Language"
+msgstr "Langue"
+
+#: ckanext/montreal_theme/templates/navigation/top-nav.html:19
+msgid "French"
+msgstr "Français"
+
+
+#: ckanext/montreal_theme/templates/home/layout4.html:9
+msgid "Welcome to Montreal’s open data website"
+msgstr "Bienvenue sur le site des données ouvertes de la ville de Montréal"
+
