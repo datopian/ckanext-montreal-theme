@@ -21,7 +21,7 @@
             <div class="d-flex w-100 gap-4 align-items-end">
               <div class="d-flex gap-4 w-100">
                 <div class="form-group mb-0">
-                  <label for="form-control-default-one">{{_("Recherche")}}</label>
+                  <label for="form-control-default-one">{{_("Search")}}</label>
                   <div class="input-group-icon input-group-icon-left">
                     <input
                       name="q" 
@@ -56,7 +56,7 @@
               
               <div class="ml-auto w-fit d-flex gap-1 h-fit" >
                 <button type="reset" class="btn btn-link btn-squared">
-                  {{_("Effacer")}}
+                  {{_("Erase")}}
                 </button>
                 <button type="submit" class="btn btn-primary btn-squared">
                   {{_("Search")}}
@@ -93,23 +93,24 @@
     <form class="m-0" action="/dataset">
       <button type="button" class="btn btn-squared btn-icon-left py-0 pr-0" >
         <span class="icon icon-search" aria-hidden="true"></span>
-        <span class="btn-label">{{_("Rechercher")}}</span>
+        <span class="btn-label">{{_("Search")}}</span>
       </button>
       <div class="form-group montreal-input-container flex gap-0 m-0 hidden items-center gap-3">
-        <div class="flex items-center mb-0">
-          <div class="input-group-icon input-group-icon-left m-0">
-            <input type="text" class="form-control rounded-0" name="q" placeholder="" >
+        <div class="flex items-center mb-0 position-relative">
+          <div class="input-group-icon input-group-icon-left m-0 ">
+            <input type="text" class="form-control rounded-0 pr-4 w-100" name="q" placeholder="" >
             <span class="icon icon-search" aria-hidden="true"></span>
           </div>
-          <select class="form-control rounded-0 m-0">
+          <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:160px">
+            <i class="icon icon-x text-dark"></i>
+          </span> 
+          <select class="form-control rounded-0 m-0" style="width:100%;max-width:160px">
             <option value="/dataset">{{_("Datasets")}}</option>
             <option value="/showcase">{{_("Applications")}}</option>
             <option value="/blog">{{_("News")}}</option>
           </select>
         </div>
-        <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close">
-          <i class="icon icon-x text-dark"></i>
-        </span> 
+        
       </div>
     </form>
   </div>
@@ -125,6 +126,7 @@
       button.addEventListener("click", ()=>{
         button.classList.add("hidden");
         inputContainer.classList.remove("hidden")
+        inputContainer.querySelector("input").focus();
       });
 
       closeSearch.addEventListener("click", ()=>{

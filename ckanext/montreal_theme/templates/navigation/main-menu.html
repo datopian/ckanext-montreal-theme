@@ -3,17 +3,17 @@
     <div class="font-open-sans text-base">
       <ul class="d-flex align-items-center flex gap-3 mb-0 pl-0">
         <li>
-          <a href="/" class="pl-0 pt-2 pr-2 pb-2 block"> {{_('Accueil')}} </a>
+          <a href="/" class="pl-0 pt-2 pr-2 pb-2 block"> {{_('Home')}} </a>
         </li>
         <li class="dropdown app-mega-menu">
           <a
-            href="/dataset"
+            href="#"
             class="dropdown-toggle p-2 block"
             data-toggle="dropdown"
             role="button"
             aria-expanded="false"
           >
-            {{_('Données')}} <span class="caret"></span>
+            {{_('Data')}} <span class="caret"></span>
           </a>
           <div class="dropdown-menu mt-0">
             <div class="inner py-lg-4 wide-container">
@@ -36,30 +36,29 @@
                         fill="#ADB2BD"
                       />
                     </svg>
-                    <span>{{_("Catalogue")}}</span>
+                    <span>{{_("Datasets")}}</span>
                   </h3>
                   <div class="row">
                     <div class="col">
                       <ul>
                         <li>
-                          <a href="/dataset">
+      
+                          <a href="{{ h.url_for('group.index') }}">
                             <span class="submenu-title block"
-                              >{{_("Par catégories")}}</span
+                              >{{_("By categories")}}</span
                             >
                             <span class="submenu-description block"
-                              >{{"Sit odio adipiscing dolor mus commodo pulvinar
-                              hendrerit id."}}</span
+                              >{{_("Find a dataset within a specific category (Health, Transportation)")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="{{ h.url_for('organization.index') }}">
                             <span class="submenu-title block"
-                              >{{_("Par organisations")}}</span
+                              >{{_("By organizations")}}</span
                             >
                             <span class="submenu-description block"
-                              >{{"Sit odio adipiscing dolor mus commodo pulvinar
-                              hendrerit id."}}</span
+                              >{{_("Discover data according to the organization who produce it")}}</span
                             >
                           </a>
                         </li>
@@ -68,25 +67,22 @@
                     <div class="col">
                       <ul>
                         <li>
-                          <a href="/dataset">
+                          <a href="{{h.url_for('showcase.search')}}">
                             <span class="submenu-title block"
-                              >{{_("Par thématiques")}}</span
+                              >{{_("By Applications")}}</span
                             >
                             <span class="submenu-description block"
-                              >{{"Semper vivamus ipsum mi cras tristique
-                              consequat pellentesque. In mauris etiam sit
-                              vulputate vulputate arcu feugiat ut."}}</span
+                              >{{_("See which datasets are used in third-party applications")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/pages/donnees-ouvertes-publieurs">
                             <span class="submenu-title block"
-                              >{{_("Par applications")}}</span
+                              >{{_("By Publisher")}}</span
                             >
                             <span class="submenu-description block"
-                              >{{"Lorem ipsum dolor sit amet
-                              consectetur"}}</span
+                              >{{_("Browse datasets by publishers")}}</span
                             >
                           </a>
                         </li>
@@ -96,18 +92,16 @@
                 </div>
                 <div class="col-4">
                   <div class="encart encart-light">
-                    <h4 class="encart-title">{{_("Recherche")}}</h4>
+                    <h4 class="encart-title">{{_("Search")}}</h4>
                     <div class="encart-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec quis leo ut arcu viverra scelerisque vel nec
-                        justo. Sed ac viverra lorem non.
+                        {{_("Search through donnee.montrel.ca hundreds of datasets.")}}
                       </p>
                       <div class="btn-wrapper">
                         <a
                           class="btn btn-secondary btn-squared bg-transparent"
-                          href="#"
-                          >{{_("Parcourir tous les jeux")}}</a
+                          href="{{h.url_for('dataset.search')}}"
+                          >{{_("Browse all")}}</a
                         >
                       </div>
                     </div>
@@ -118,102 +112,7 @@
           </div>
         </li>
         <li>
-          <a href="/blog" class="p-2 block">{{_("Actualités")}}</a>
-        </li>
-        <li class="dropdown app-mega-menu">
-          <a
-            href="#"
-            class="dropdown-toggle p-2 block"
-            data-toggle="dropdown"
-            role="button"
-            aria-expanded="false"
-          >
-            {{_('Ressources')}} <span class="caret"></span>
-          </a>
-          <div class="dropdown-menu mt-0 ">
-            <div class="inner py-lg-4 px-0 wide-container">
-              <div class="row">
-                <div class="col-8">
-                  <div class="row">
-                    <div class="col">
-                      <h3
-                        class="d-flex flex-row items-center gap-3 menu-description"
-                      >
-                        <i class="icon-info"></i>
-                        <span>{{_("Aide")}}</span>
-                      </h3>
-                      <ul>
-                        <li>
-                          <a href="/">
-                            <span class="submenu-title block"
-                              >{{_("Introduction")}}</span
-                            >
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span class="submenu-title block"
-                              >{{_("Guides")}}</span
-                            >
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span class="submenu-title block"
-                              >{{_("Foire aux questions")}}</span
-                            >
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col">
-                      <h3
-                        class="d-flex flex-row items-center gap-3 menu-description"
-                      >
-                        <i class="icon-archive"></i>
-                        <span>{{_("Banque de connaissances")}}</span>
-                      </h3>
-                      <ul>
-                        <li>
-                          <a href="/dataset">
-                            <span class="submenu-title block"
-                              >{{_("Pour les organisations")}}</span
-                            >
-                            <span class="submenu-description block"
-                              >{{"Semper vivamus ipsum mi cras tristique
-                              consequat pellentesque. In mauris etiam sit
-                              vulputate vulputate arcu feugiat ut."}}</span
-                            >
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <h3
-                    class="d-flex flex-row items-center gap-3 menu-description"
-                  >
-                    <span>&nbsp;</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <a href="/dataset">
-                        <span class="submenu-title block"
-                          >{{_("Pour les développeurs")}}</span
-                        >
-                        <span class="submenu-description block"
-                          >{{"Semper vivamus ipsum mi cras tristique consequat
-                          pellentesque. In mauris etiam sit vulputate vulputate
-                          arcu feugiat ut."}}</span
-                        >
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="/blog" class="p-2 block">{{_("News")}}</a>
         </li>
         <li>
           <a href="/showcase" class="p-2">{{_("Applications")}}</a>
@@ -226,7 +125,7 @@
             role="button"
             aria-expanded="false"
           >
-            {{_('À propos')}} <span class="caret"></span>
+            {{_('About')}} <span class="caret"></span>
           </a>
           <div class="dropdown-menu mt-0">
             <div class="inner py-lg-4 wide-container">
@@ -238,62 +137,47 @@
                         class="d-flex flex-row items-center gap-3 menu-description"
                       >
                         <i class="icon-info"></i>
-                        <span>{{_("Aperçu")}}</span>
+                        <span>{{_('About')}}</span>
                       </h3>
                       <ul>
                         <li>
-                          <a href="/dataset">
+                          <a href="/pages/notre-demarche">
                             <span class="submenu-title block"
-                              >{{_("Notre démarche")}}</span
+                              >{{_("Our Approach")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/pages/licence-d-utilisation">
                             <span class="submenu-title block"
-                              >{{_("Licence")}}</span
+                              >{{_("User License")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a href="/pages/plan-du-site">
                             <span class="submenu-title block"
-                              >{{_("Plan de site")}}</span
+                              >{{_("Sitemap")}}</span
                             >
                           </a>
                         </li>
                       </ul>
                     </div>
-                    <div class="col">
-                      <h3
-                        class="d-flex flex-row items-center gap-3 menu-description"
-                      >
-                        <span>&nbsp;</span>
-                      </h3>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <span class="submenu-title block"
-                              >{{_("Archives")}}</span
-                            >
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+           
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="encart encart-light">
-                    <h4 class="encart-title">{{_("Pour nous joindre")}}</h4>
+                    <h4 class="encart-title">{{_("Contact Us")}}</h4>
                     <div class="encart-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis leo ut arcu viverra scelerisque vel nec justo. Sed ac viverra lorem non.
+                       {{_("Please contact us regarding any comment, question, request or problem regarding our open data.")}}
                       </p>
                       <div class="btn-wrapper">
                         <a
                           class="btn btn-secondary btn-squared bg-transparent"
-                          href="#"
-                          >{{_("Remplir le formulaire")}}</a
+                          href="{{h.url_for('montreal_theme.contact_form')}}"
+                          >{{_("Contact Form")}}</a
                         >
                       </div>
                     </div>
