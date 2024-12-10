@@ -3,10 +3,11 @@
 {% extends 'page.html'%}
 
 {% block page_hero %}
+{% set current_lang = request.environ.CKAN_LANG %}
     {{components.page_hero({
         "title": _("News"),
         "description": "",
-        "selectedSearchOption": "/blog",
+        "selectedSearchOption": "/"+current_lang+"/blog",
         "query": c.q,
         "class" : "news-hero"
     })}}
@@ -36,26 +37,38 @@
     <div class="container mx-auto pt-12">
       
         <ul class="sm:flex flex-wrap sm:-mx-4 mt-gutter">
-            {% for blog in blogs %}
-            {% set url = h.url_for('pages.blog_show', page=blog.name) %}
-            <li class="sm:w-1/2 lg:w-1/3">
-                <a class="flex py-4 my-4 sm:mx-4" href="{{ url }}">
-                    <div class="flex flex-col justify-center overflow-hidden">
-                        <p class="text-2xl font-bold text-gray-700">{{ blog.title }}</p>
-                        <p class="text-gray-600">{{  h.render_datetime(blog.publish_date) }}</p>
-                        {% if blog.content %}
-                            {% if editor %}
-                                <p class="text-gray-700">{{ h.render_markdown(blog.content|striptags|truncate) }}</p>
+            {% if blogs %}
+                {% for blog in blogs %}
+                {% set url = h.url_for('pages.blog_show', page=blog.name) %}
+                <li class="sm:w-1/2 lg:w-1/3">
+                    <a class="flex py-4 my-4 sm:mx-4" href="{{ url }}">
+                        <div class="flex flex-col justify-center overflow-hidden">
+                            <p class="text-2xl font-bold text-gray-700">{{ blog.title }}</p>
+                            <p class="text-gray-600">{{ h.render_datetime(blog.publish_date) }}</p>
+                            {% if blog.content %}
+                                {% if editor %}
+                                    <p class="text-gray-700">{{ h.render_markdown(blog.content|striptags|truncate) }}</p>
+                                {% else %}
+                                    <p class="text-gray-700">{{ h.render_markdown(blog.content|striptags|truncate) }}</p>
+                                {% endif %}
                             {% else %}
-                                <p class="text-gray-700">{{ h.render_markdown(blog.content|striptags|truncate) }}</p>
+                                <p class="text-gray-700">{{ _("This page currently has no content") }}</p>
                             {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            {% else %}
+                <li class="w-full">
+                    <p class="text-gray-700 text-center">
+                        {% if c.q %}
+                            {{ _("No results found matching") }} "{{ c.q }}"
                         {% else %}
-                            <p class="text-gray-700">{{ _("This page currently has no content") }}</p>
+                            {{ _("No results found.") }}
                         {% endif %}
-                    </div>
-                </a>
-            </li>
-            {% endfor %}
+                    </p>
+                </li>
+            {% endif %}
         </ul>
     </div>
 {% endblock %}
