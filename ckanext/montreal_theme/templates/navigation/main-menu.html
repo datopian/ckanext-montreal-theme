@@ -77,7 +77,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="/pages/donnees-ouvertes-publieurs">
+                          <a href="{{ h.url_for('pages.show', page='donnees-ouvertes-publieurs') }}">
                             <span class="submenu-title block"
                               >{{_("By Publisher")}}</span
                             >
@@ -112,10 +112,10 @@
           </div>
         </li>
         <li>
-          <a href="/blog" class="p-2 block">{{_("News")}}</a>
+          <a href="{{h.url_for('pages.blog_index')}}" class="p-2 block">{{_("News")}}</a>
         </li>
         <li>
-          <a href="/showcase" class="p-2">{{_("Applications")}}</a>
+          <a href="{{h.url_for('showcase.search')}}" class="p-2">{{_("Applications")}}</a>
         </li>
         <li class="dropdown app-mega-menu">
           <a
@@ -141,21 +141,21 @@
                       </h3>
                       <ul>
                         <li>
-                          <a href="/pages/notre-demarche">
+                          <a href="{{ h.url_for('pages.show', page='notre-demarche') }}">
                             <span class="submenu-title block"
                               >{{_("Our Approach")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="/pages/licence-d-utilisation">
+                          <a href="{{ h.url_for('pages.show', page='licence-d-utilisation') }}">
                             <span class="submenu-title block"
                               >{{_("User License")}}</span
                             >
                           </a>
                         </li>
                         <li>
-                          <a href="/pages/plan-du-site">
+                          <a href="{{ h.url_for('pages.show', page='plan-du-site') }}">
                             <span class="submenu-title block"
                               >{{_("Sitemap")}}</span
                             >
