@@ -1140,11 +1140,11 @@ msgstr "Voyez quels jeux de données sont utilisés dans les applications tiers"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:85
 msgid "Browse datasets by publishers"
-msgstr "Parcourir les jeux de données en selon leurs publieurs"
+msgstr "Parcourir les jeux de données selon leurs publieurs"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:98
 msgid "Search through donnee.montrel.ca hundreds of datasets."
-msgstr "Rechercher à travers des centaines de jeux de données présent sur donnee.montrel.ca"
+msgstr "Rechercher à travers des centaines de jeux de données présents sur donnee.montrel.ca"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:104
 msgid "Browse all"

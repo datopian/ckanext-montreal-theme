@@ -2,6 +2,8 @@
 
 {% set selectedSearchOption = searchOption if searchOption else url_for('dataset.search') %}
 
+{% set current_lang = request.environ.CKAN_LANG %}
+
 <section class="montreal-theme montreal-hero {{args.class}}">
   <div
     class="document-heading document-heading-left-notch document-heading-fullwidth bg-gray-100"
@@ -31,23 +33,26 @@
                       id="form-control-searchbar"
                       placeholder=""
                     />
-                    <span class="icon icon-search" aria-hidden="true"></span>
+                    <button type="submit" class="icon icon-search" style="pointer-events: all; cursor:pointer; z-index:5">
+                     
+                    </button>
+                    
                   </div>
 
                 </div>
                 <div class="form-group mb-0">
                   <label for="form-control-default-one">{{_("Type")}}</label>
                   <select class="custom-select" id="" required>
-                    <option value="{{ url_for('dataset.search') }}" 
-                      {% if args.selectedSearchOption == url_for('dataset.search') %} selected {% endif %}>
+                    <option value="/{{current_lang}}/dataset" 
+                      {% if args.selectedSearchOption == "/"+current_lang+"/dataset" %} selected {% endif %}>
                       {{ _("Datasets") }}
                     </option>
-                    <option value="/blog" 
-                      {% if args.selectedSearchOption == '/blog' %} selected {% endif %}>
+                    <option value="/{{current_lang}}/blog" 
+                      {% if args.selectedSearchOption == "/"+current_lang+"/blog" %} selected {% endif %}>
                       {{ _("News") }}
                     </option>
-                    <option value="{{ url_for('showcase.search') }}" 
-                      {% if args.selectedSearchOption == url_for('showcase.search') %} selected {% endif %}>
+                    <option value="/{{current_lang}}/showcase" 
+                      {% if args.selectedSearchOption == "/"+current_lang+"/showcase" %} selected {% endif %}>
                       {{ _("Applications") }}
                     </option>
                   </select>
@@ -89,25 +94,28 @@
 {% endmacro %}
 
 {% macro search_bar() %}
+{% set current_lang = request.environ.CKAN_LANG %}
   <div class="montreal-searchbar">
-    <form class="m-0" action="/dataset">
+    <form class="m-0" action="/{{current_lang}}/dataset">
       <button type="button" class="btn btn-squared btn-icon-left py-0 pr-0" >
         <span class="icon icon-search" aria-hidden="true"></span>
         <span class="btn-label">{{_("Search")}}</span>
       </button>
       <div class="form-group montreal-input-container flex gap-0 m-0 hidden items-center gap-3">
         <div class="flex items-center mb-0 position-relative">
-          <div class="input-group-icon input-group-icon-left m-0 ">
-            <input type="text" class="form-control rounded-0 pr-4 w-100" name="q" placeholder="" >
-            <span class="icon icon-search" aria-hidden="true"></span>
-          </div>
+          <button type="submit" class="m-0 cursor-pointer position-absolute" style="cursor: pointer!important; z-index: 10; left:8px;">
+            <span class="icon icon-search" aria-hidden="true" style="width: 24px;"></span>
+          </button>
+            <input type="text" class="form-control rounded-0 pr-4 pl-5" name="q" placeholder="" >
+            
+          
           <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:160px">
             <i class="icon icon-x text-dark"></i>
           </span> 
           <select class="form-control rounded-0 m-0" style="width:100%;max-width:160px">
-            <option value="/dataset">{{_("Datasets")}}</option>
-            <option value="/showcase">{{_("Applications")}}</option>
-            <option value="/blog">{{_("News")}}</option>
+            <option value="/{{current_lang}}/dataset">{{_("Datasets")}}</option>
+            <option value="/{{current_lang}}/blog">{{_("News")}}</option>
+            <option value="/{{current_lang}}/showcase">{{_("Applications")}}</option>
           </select>
         </div>
         
