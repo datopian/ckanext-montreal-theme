@@ -106,30 +106,42 @@
         <h3 class="h3 ">
             {{_("How to cite these data")}}
         </h3>
-        <div class="mb-2">
-            <b class="text-dark block">{{_("APA (7th Edition)")}}</b>
-            <p class="mb-1">
-                Ville de Montréal. (<span class="current-year"></span>). <i>{{ _(package.title) }}</i> [{{_("Dataset")}}]. {{_("Open Data City of Montreal")}}.
-            </p>
-            <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a>
+        <div class=" item mb-2 relative pr-8">
+            <div class="content">
+                <b class="text-dark block">{{_("APA (7th Edition)")}}</b>
+                <p class="mb-1">
+                    Ville de Montréal. (<span class="current-year"></span>). <i>{{ _(package.title) }}</i> [{{_("Dataset")}}]. {{_("Open Data City of Montreal")}}.
+                </p>
+                <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a>
+            </div>
+            <a href="#" class="copy-btn">Copy</a>
         </div>
-        <div class="mb-2">
-            <b class="text-dark block">{{_("IEEE")}}</b>
-            <p class="mb-1">
-                [#] Ville de Montréal, {{ _(package.title) }}, Montréal: {{_("Open Data City of Montreal")}}, <span class="current-year"></span>. [{{_("Dataset")}}]. {{_("Available")}}: <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a>. [{{_("consulted on")}} <span class="current-date"></span>].
-            </p>
+        <div class=" item mb-2 relative pr-8">
+            <div class="content">
+                <b class="text-dark block">{{_("IEEE")}}</b>
+                <p class="mb-1">
+                    [#] Ville de Montréal, {{ _(package.title) }}, Montréal: {{_("Open Data City of Montreal")}}, <span class="current-year"></span>. [{{_("Dataset")}}]. {{_("Available")}}: <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a>. [{{_("consulted on")}} <span class="current-date"></span>].
+                </p>
+            </div>
+            <a href="#" class="copy-btn">Copy</a>
         </div>
-        <div class="mb-2">
-            <b class="text-dark block">{{_("Newspaper Article")}}</b>
-            <p class="mb-1">
-                {{_("Data in this news are from the dataset")}} <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a> {{_("from City of Montreal’s Open Data Website")}} <span class="current-date"></span>.
-            </p>
+        <div class=" item mb-2 relative pr-8">
+            <div class="content">
+                <b class="text-dark block">{{_("Newspaper Article")}}</b>
+                <p class="mb-1">
+                    {{_("Data in this news are from the dataset")}} <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a> {{_("from City of Montreal’s Open Data Website")}} <span class="current-date"></span>.
+                </p>
+            </div>
+            <a href="#" class="copy-btn">Copy</a>
         </div>
-        <div class="mb-2">
-            <b class="text-dark block">{{_("Other uses")}}</b>
-            <p class="mb-1">
-                {{_("With data from")}} <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a> {{_("taken from City of Montreal’s Open Data Website")}}, <span class="current-date"></span>.
-            </p>
+        <div class=" item mb-2 relative pr-8">
+            <div class="content">
+                <b class="text-dark block">{{_("Other uses")}}</b>
+                <p class="mb-1">
+                    {{_("With data from")}} <a href="{{ h.url_for('dataset.read', id=package.name, _external=True) }}">{{ h.url_for('dataset.read', id=package.name, _external=True) }}</a> {{_("taken from City of Montreal’s Open Data Website")}}, <span class="current-date"></span>.
+                </p>
+            </div>
+            <a href="#" class="copy-btn">Copy</a>
         </div>
     </div>
     <script>
@@ -144,6 +156,26 @@
         const currentDateElementes = document.querySelectorAll(".current-date");
         currentYearElements.forEach( (el)=>el.textContent = currentYear );
         currentDateElementes.forEach( (el)=>el.textContent = formattedCurrentDate );
+    </script>
+
+    <script>
+        // Function to copy content
+        function copyContent(event) {
+        event.preventDefault();
+        const contentDiv = event.target.closest('.item').querySelector('.content');
+        const range = document.createRange();
+        range.selectNode(contentDiv);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        
+        return false;
+        }
+
+        // Add event listeners to all copy buttons
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', copyContent);
+        });
     </script>
 </div>
 {% endblock %}
