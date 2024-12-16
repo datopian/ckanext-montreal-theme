@@ -1123,7 +1123,7 @@ msgstr "Par applications"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:82
 msgid "By Publisher"
-msgstr "Par publieur"
+msgstr "Par publieurs"
 
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:51
@@ -1175,5 +1175,5 @@ msgstr "Français"
 
 #: ckanext/montreal_theme/templates/home/layout4.html:9
 msgid "Welcome to Montreal’s open data website"
-msgstr "Bienvenue sur le site des données ouvertes de la ville de Montréal"
+msgstr "Bienvenue sur le site des données ouvertes de la Ville de Montréal"
 
