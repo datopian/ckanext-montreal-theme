@@ -15,7 +15,6 @@
     {% if g.user and g.userobj.sysadmin %}
         {{ super() }}
     {% else %}
-        
         <div class="container mx-auto" style="padding-top: 35px">
             <div class="montreal-theme">
                 <div class="page-header bg-transparent mt-0 pt-0 border-0">
@@ -75,8 +74,6 @@
                 </div>
             </div>
         </div>
-
-        
     {% endif %}
 {% endblock %}
 
@@ -102,6 +99,77 @@
                 </div>
             </ul>
         </div>
+        {% if res.datastore_active %}
+
+        <section class="module mb-8 lg:mx-2">
+            <div class="montreal-theme lg:-ml-2">
+                <h3 class="h3 " >
+                    {{ _('Data Dictionary') }}
+                </h3>
+                <div class="flex flex-col gap-8 overflow-auto " style="max-height: 500px;">
+                    {% set dict=h.datastore_dictionary(res.id) %}
+                    {% for field in dict %}
+                        {% set id = field.id %}   
+                        {% set label = h.get_translated(field.get('info', {}), 'label') %}   
+                        {% set type = field.type %}   
+                        {% set notes = h.render_markdown(h.get_translated(field.get('info', {}), 'notes')) %}   
+                        
+                        {% if notes or id or type or notes %}
+                            <div class="flex  flex-col lg:flex-row" >
+                                {% if  id or type or notes  %}
+                                <div class="w-full flex flex-col gap-1">
+                                    {% if id %}
+                                    <div class="list">
+                                        <div class="list-item py-0">
+                                            <div class="list-item-label">{{_("Label")}}</div>
+                                        </div>
+                                        <div class="list-item py-0">
+                                            <div class="list-item-content  ">
+                                                {{id }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% if type %}
+                                    <div class="list">
+                                        <div class="list-item py-0 block" >
+                                            <span class="list-item-label inline-block text-sm">{{_("Type")}}</span>
+                                            <span class="list-item-content inline-block" >
+                                                {{type}}
+                                            </span>
+                                        </div>
+                        
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                {% if notes %}
+                                    <div class="w-full">
+                                        <div class="list">
+                                            <div class="list-item py-0">
+                                                <div class="list-item-label">{{_("Description")}}</div>
+                                            </div>
+                                            <div class="list-item py-0">
+                                                <div class="list-item-content ">
+                                                    Lorem ipsum dolor sit amed
+                                                    {{ notes }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        
+                    {% endfor %}
+    
+                    
+                
+                </div>
+            </div>
+    
+        </section>
+        {% endif %}
     </div>
     <div class="montreal-theme lg:w-2/3">
         <h3 class="h3 ">
@@ -183,79 +251,6 @@
 {% block primary_content %}
 
 {% if res %}
-
-    {% if res.datastore_active %}
-
-    <section class="module mb-8">
-        <div class="montreal-theme lg:-ml-2">
-            <h3 class="h3 " >
-                {{ _('Data Dictionary') }}
-            </h3>
-            <div class="flex flex-col gap-8 overflow-auto " style="max-height: 400px;">
-                {% set dict=h.datastore_dictionary(res.id) %}
-                {% for field in dict %}
-                    {% set id = field.id %}   
-                    {% set label = h.get_translated(field.get('info', {}), 'label') %}   
-                    {% set type = field.type %}   
-                    {% set notes = h.render_markdown(h.get_translated(field.get('info', {}), 'notes')) %}   
-                    
-                    {% if notes or id or type or notes %}
-                        <div class="flex  flex-col lg:flex-row" >
-                            {% if  id or type or notes  %}
-                            <div class="w-full flex flex-col gap-1">
-                                {% if id %}
-                                <div class="list">
-                                    <div class="list-item py-0">
-                                        <div class="list-item-label">{{_("Label")}}</div>
-                                    </div>
-                                    <div class="list-item py-0">
-                                        <div class="list-item-content  ">
-                                            {{id }}
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                                {% if type %}
-                                <div class="list">
-                                    <div class="list-item py-0 block" >
-                                        <span class="list-item-label inline-block text-sm">{{_("Type")}}</span>
-                                        <span class="list-item-content inline-block" >
-                                            {{type}}
-                                        </span>
-                                    </div>
-                    
-                                </div>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                            {% if notes %}
-                                <div class="w-full">
-                                    <div class="list">
-                                        <div class="list-item py-0">
-                                            <div class="list-item-label">{{_("Description")}}</div>
-                                        </div>
-                                        <div class="list-item py-0">
-                                            <div class="list-item-content ">
-                                                Lorem ipsum dolor sit amed
-                                                {{ notes }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                    
-                {% endfor %}
-
-                
-            
-            </div>
-        </div>
-
-    </section>
-    {% endif %}
-
     <section class="module">
         <div class="montreal-theme lg:-ml-2">
             <h3 class="h3 " >
