@@ -78,6 +78,9 @@
 {% endblock %}
 
 {% block extra_content %}
+{% if g.user and g.userobj.sysadmin %}
+{{ super() }}
+{% else %}
 <div class="container px-0 pt-0 mx-auto  p-gutter">
     <div class="mb-gutter lg:mb-0 w-full lg:mr-gutter px-4">
         <div id="data" >
@@ -100,75 +103,70 @@
             </ul>
         </div>
         {% if res.datastore_active %}
-
-        <section class="module mb-8 lg:mx-2">
-            <div class="montreal-theme lg:-ml-2">
-                <h3 class="h3 " >
-                    {{ _('Data Dictionary') }}
-                </h3>
-                <div class="flex flex-col gap-8 overflow-auto " style="max-height: 500px;">
-                    {% set dict=h.datastore_dictionary(res.id) %}
-                    {% for field in dict %}
-                        {% set id = field.id %}   
-                        {% set label = h.get_translated(field.get('info', {}), 'label') %}   
-                        {% set type = field.type %}   
-                        {% set notes = h.render_markdown(h.get_translated(field.get('info', {}), 'notes')) %}   
-                        
-                        {% if notes or id or type or notes %}
-                            <div class="flex  flex-col lg:flex-row" >
-                                {% if  id or type or notes  %}
-                                <div class="w-full flex flex-col gap-1">
-                                    {% if id %}
-                                    <div class="list">
-                                        <div class="list-item py-0">
-                                            <div class="list-item-label">{{_("Label")}}</div>
-                                        </div>
-                                        <div class="list-item py-0">
-                                            <div class="list-item-content  ">
-                                                {{id }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {% if type %}
-                                    <div class="list">
-                                        <div class="list-item py-0 block" >
-                                            <span class="list-item-label inline-block text-sm">{{_("Type")}}</span>
-                                            <span class="list-item-content inline-block" >
-                                                {{type}}
-                                            </span>
-                                        </div>
-                        
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                {% endif %}
-                                {% if notes %}
-                                    <div class="w-full">
+            <section class="module mb-8 lg:mx-2">
+                <div class="montreal-theme lg:-ml-2">
+                    <h3 class="h3 " >
+                        {{ _('Data Dictionary') }}
+                    </h3>
+                    <div class="flex flex-col gap-8 overflow-auto " style="max-height: 500px;">
+                        {% set dict=h.datastore_dictionary(res.id) %}
+                        {% for field in dict %}
+                            {% set column = field.id %}   
+                            {% set label = h.get_translated(field.get('info', {}), 'label') %}   
+                            {% set type = field.type %}   
+                            {% set notes = h.render_markdown(h.get_translated(field.get('info', {}), 'notes')) %}   
+                            
+                            {% if notes or column or type or notes %}
+                                <div class="flex  flex-col lg:flex-row" >
+                                    {% if  column or type or notes  %}
+                                    <div class="w-full flex flex-col gap-1">
+                                        {% if column %}
                                         <div class="list">
                                             <div class="list-item py-0">
-                                                <div class="list-item-label">{{_("Description")}}</div>
+                                                <div class="list-item-label">{{_("Column")}}</div>
                                             </div>
                                             <div class="list-item py-0">
-                                                <div class="list-item-content ">
-                                                    Lorem ipsum dolor sit amed
-                                                    {{ notes }}
+                                                <div class="list-item-content  ">
+                                                    {{column }}
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
+                                        {% if type %}
+                                        <div class="list">
+                                            <div class="list-item py-0 block" >
+                                                <span class="list-item-label inline-block text-sm">{{_("Type")}}</span>
+                                                <span class="list-item-content inline-block" >
+                                                    {{type}}
+                                                </span>
+                                            </div>
+                            
+                                        </div>
+                                        {% endif %}
                                     </div>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                        
-                    {% endfor %}
-    
-                    
-                
+                                    {% endif %}
+                                    {% if notes %}
+                                        <div class="w-full">
+                                            <div class="list">
+                                                <div class="list-item py-0">
+                                                    <div class="list-item-label">{{_("Description")}}</div>
+                                                </div>
+                                                <div class="list-item py-0">
+                                                    <div class="list-item-content ">
+                                                        Lorem ipsum dolor sit amed
+                                                        {{ notes }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-    
-        </section>
+        
+            </section>
         {% endif %}
     </div>
     <div class="montreal-theme lg:w-2/3">
@@ -246,54 +244,59 @@
         });
     </script>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block primary_content %}
-
-{% if res %}
-    <section class="module">
-        <div class="montreal-theme lg:-ml-2">
-            <h3 class="h3 " >
-                {{ _('Additional Information') }}
-            </h3>
-            <div class="flex flex-col gap-2">
-                <div class="list">
-                    <div class="list-item py-0">
-                        <div class="list-item-label">{{_("Publisher")}}</div>
+{% if g.user and g.userobj.sysadmin %}
+    {{ super() }}
+{% else %}
+    {% if res %}
+        <section class="module">
+            <div class="montreal-theme lg:-ml-2">
+                <h3 class="h3 " >
+                    {{ _('Additional Information') }}
+                </h3>
+                <div class="flex flex-col gap-2">
+                    <div class="list">
+                        <div class="list-item py-0">
+                            <div class="list-item-label">{{_("Publisher")}}</div>
+                        </div>
+                        <div class="list-item py-0">
+                            <div class="list-item-content text-primary font-bold"><a href="{{url_for('organization.read', id=package.organization.name)}}">{{package.organization.title}}</a></div>
+                        </div>
                     </div>
-                    <div class="list-item py-0">
-                        <div class="list-item-content text-primary font-bold"><a href="{{url_for('organization.read', id=package.organization.name)}}">{{package.organization.title}}</a></div>
+                    <div class="list">
+                        <div class="list-item py-0">
+                            <div class="list-item-label">{{_("Format")}}</div>
+                        </div>
+                        <div class="list-item py-0">
+                            <div class="list-item-content ">{{resource.format}}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="list">
-                    <div class="list-item py-0">
-                        <div class="list-item-label">{{_("Format")}}</div>
+                    <div class="list">
+                        <div class="list-item py-0">
+                            <div class="list-item-label">{{ _('Metadata last updated') }}</div>
+                        </div>
+                        <div class="list-item py-0">
+                            <div class="list-item-content ">{{ h.render_datetime(res.metadata_modified) or h.render_datetime(res.created) or _('unknown') }}</div>
+                        </div>
                     </div>
-                    <div class="list-item py-0">
-                        <div class="list-item-content ">{{resource.format}}</div>
+                    <div class="list">
+                        <div class="list-item py-0">
+                            <div class="list-item-label">{{ _('License') }}</div>
+                        </div>
+                        <div class="list-item py-0">
+                            <div class="list-item-content ">{% snippet "snippets/license.html", pkg_dict=pkg, text_only=True %}</div>
+                        </div>
+                    
                     </div>
-                </div>
-                <div class="list">
-                    <div class="list-item py-0">
-                        <div class="list-item-label">{{ _('Metadata last updated') }}</div>
-                    </div>
-                    <div class="list-item py-0">
-                        <div class="list-item-content ">{{ h.render_datetime(res.metadata_modified) or h.render_datetime(res.created) or _('unknown') }}</div>
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="list-item py-0">
-                        <div class="list-item-label">{{ _('License') }}</div>
-                    </div>
-                    <div class="list-item py-0">
-                        <div class="list-item-content ">{% snippet "snippets/license.html", pkg_dict=pkg, text_only=True %}</div>
-                    </div>
-                
                 </div>
             </div>
-        </div>
 
-    </section>
+        </section>
+    {% endif %}
+
 {% endif %}
 {% endblock %}
 
