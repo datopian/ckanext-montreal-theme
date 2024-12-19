@@ -1123,7 +1123,7 @@ msgstr "Par applications"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:82
 msgid "By Publisher"
-msgstr "Par publieur"
+msgstr "Par publieurs"
 
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:51
@@ -1140,11 +1140,11 @@ msgstr "Voyez quels jeux de données sont utilisés dans les applications tiers"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:85
 msgid "Browse datasets by publishers"
-msgstr "Parcourir les jeux de données en selon leurs publieurs"
+msgstr "Parcourir les jeux de données selon leurs publieurs"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:98
 msgid "Search through donnee.montrel.ca hundreds of datasets."
-msgstr "Rechercher à travers des centaines de jeux de données présent sur donnee.montrel.ca"
+msgstr "Rechercher à travers des centaines de jeux de données présents sur donnee.montrel.ca"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:104
 msgid "Browse all"
@@ -1175,5 +1175,5 @@ msgstr "Français"
 
 #: ckanext/montreal_theme/templates/home/layout4.html:9
 msgid "Welcome to Montreal’s open data website"
-msgstr "Bienvenue sur le site des données ouvertes de la ville de Montréal"
+msgstr "Bienvenue sur le site des données ouvertes de la Ville de Montréal"
 
