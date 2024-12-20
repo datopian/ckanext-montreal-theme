@@ -108,7 +108,7 @@
                     <h3 class="h3 " >
                         {{ _('Data Dictionary') }}
                     </h3>
-                    <div class="flex flex-col gap-8 overflow-auto " style="max-height: 500px;">
+                    <div class="flex flex-col gap-8 overflow-auto lg:w-2/3 " style="max-height: 500px;">
                         {% set dict=h.datastore_dictionary(res.id) %}
                         {% for field in dict %}
                             {% set column = field.id %}   
@@ -126,7 +126,7 @@
                                                 <div class="list-item-label">{{_("Column")}}</div>
                                             </div>
                                             <div class="list-item py-0">
-                                                <div class="list-item-content  ">
+                                                <div class="list-item-content font-normal ">
                                                     {{column }}
                                                 </div>
                                             </div>
@@ -136,7 +136,7 @@
                                         <div class="list">
                                             <div class="list-item py-0 block" >
                                                 <span class="list-item-label inline-block text-sm">{{_("Type")}}</span>
-                                                <span class="list-item-content inline-block" >
+                                                <span class="list-item-content inline-block font-normal" >
                                                     {{type}}
                                                 </span>
                                             </div>
@@ -152,8 +152,7 @@
                                                     <div class="list-item-label">{{_("Description")}}</div>
                                                 </div>
                                                 <div class="list-item py-0">
-                                                    <div class="list-item-content ">
-                                                        Lorem ipsum dolor sit amed
+                                                    <div class="list-item-content font-normal">
                                                         {{ notes }}
                                                     </div>
                                                 </div>
@@ -258,36 +257,42 @@
                     {{ _('Additional Information') }}
                 </h3>
                 <div class="flex flex-col gap-2">
+                    {% if package.organization.title %}
                     <div class="list">
                         <div class="list-item py-0">
                             <div class="list-item-label">{{_("Publisher")}}</div>
                         </div>
                         <div class="list-item py-0">
-                            <div class="list-item-content text-primary font-bold"><a href="{{url_for('organization.read', id=package.organization.name)}}">{{package.organization.title}}</a></div>
+                            <div class="list-item-content font-normal text-primary font-bold"><a href="{{url_for('organization.read', id=package.organization.name)}}">{{package.organization.title}}</a></div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if resource.format %}
                     <div class="list">
                         <div class="list-item py-0">
                             <div class="list-item-label">{{_("Format")}}</div>
                         </div>
                         <div class="list-item py-0">
-                            <div class="list-item-content ">{{resource.format}}</div>
+                            <div class="list-item-content font-normal ">{{resource.format}}</div>
                         </div>
                     </div>
+                    {% endif %}
                     <div class="list">
                         <div class="list-item py-0">
                             <div class="list-item-label">{{ _('Metadata last updated') }}</div>
                         </div>
                         <div class="list-item py-0">
-                            <div class="list-item-content ">{{ h.render_datetime(res.metadata_modified) or h.render_datetime(res.created) or _('unknown') }}</div>
+                            <div class="list-item-content font-normal ">{{ h.render_datetime(res.metadata_modified) or h.render_datetime(res.created) or _('unknown') }}</div>
                         </div>
                     </div>
+                 
+                    
                     <div class="list">
                         <div class="list-item py-0">
                             <div class="list-item-label">{{ _('License') }}</div>
                         </div>
                         <div class="list-item py-0">
-                            <div class="list-item-content ">{% snippet "snippets/license.html", pkg_dict=pkg, text_only=True %}</div>
+                            <div class="list-item-content font-normal ">{% snippet "snippets/license.html", pkg_dict=pkg, text_only=True %}</div>
                         </div>
                     
                     </div>
