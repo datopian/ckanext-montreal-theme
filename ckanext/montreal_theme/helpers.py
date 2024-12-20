@@ -4,7 +4,7 @@ import ckan.lib.formatters as formatters
 
 from ckan.plugins import toolkit as tk
 
-
+from datetime import datetime
 
 from ckanext.montreal_theme.model import SearchConfig
 
@@ -141,3 +141,7 @@ def teritories_string(data):
 def get_google_tag():
     gtag = tk.config.get('ckanext.montreal_theme.gtag')
     return gtag
+
+
+def datetime():
+    return datetime

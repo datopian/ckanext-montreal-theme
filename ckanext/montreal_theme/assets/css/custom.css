@@ -221,3 +221,16 @@
 .montreal-searchbar .btn-label{
   color:#212529
 }
+
+.relative:hover .copy-btn{
+  opacity: 1;
+}
+.copy-btn{
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  z-index: 5;
+  right: 0;
+  opacity: 0;
+  transition: .3s opacity;
+}

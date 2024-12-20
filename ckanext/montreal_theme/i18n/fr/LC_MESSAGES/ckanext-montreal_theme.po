@@ -1177,3 +1177,68 @@ msgstr "Français"
 msgid "Welcome to Montreal’s open data website"
 msgstr "Bienvenue sur le site des données ouvertes de la Ville de Montréal"
 
+
+
+
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:87
+msgid "Explore data"
+msgstr "Explorer les données"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:174
+msgid "How to cite these data"
+msgstr "Comment citer ces données"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:178
+msgid "APA (7th Edition)"
+msgstr "APA (7e édition)"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:180
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
+msgid "Open Data City of Montreal"
+msgstr "Données ouvertes de la Ville de Montréal"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:188
+msgid "IEEE"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
+msgid "Available"
+msgstr "Disponible"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
+msgid "consulted on"
+msgstr "consulté le"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:197
+msgid "Newspaper Article"
+msgstr "Article de presse"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:199
+msgid "Data in this news are from the dataset"
+msgstr "Les données présentés dans cet article sont tirées de l’ensemble de données"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:199
+msgid "from City of Montreal’s Open Data Website"
+msgstr "du site web des données ouvertes de la Ville de Montréal"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:206
+msgid "Other uses"
+msgstr "Autres usages"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:208
+msgid "With data from"
+msgstr "Avec les données"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:208
+msgid "taken from City of Montreal’s Open Data Website"
+msgstr "tirées du site web des données ouvertes de la Ville de Montréal"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:282
+msgid "unknown"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:287
+msgid "License"
+msgstr "Licence d’utilisation"
+
