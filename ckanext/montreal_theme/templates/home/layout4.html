@@ -8,7 +8,7 @@
   {{components.page_hero({
     "title": _("Welcome to Montreal’s open data website"),
     "description":"",
-    "selectedSearchOption": h.url_for('dataset.search'),
+    "selectedSearchOption": '/'+current_lang+'/dataset',
     "query": "",
     "class" : "home-hero"
   })}}
@@ -125,10 +125,7 @@
       </div>
       <div class="w-2/3 text-base">
         <div class="mb-2">
-          {{ _('By opening its data to everyone, the City of Montreal allows it
-          to be reused for different purposes, including commercial purposes.
-          The results of this reuse can then be shared in the community, which
-          creates a multiplier effect.') }}
+          {{ _('By opening its data to everyone, the City of Montreal allows it to be reused for different purposes, including commercial purposes. The results of this reuse can then be shared in the community, which creates a multiplier effect.') }}
         </div>
         {% if current_lang == 'fr' %}
         <a class="text-primary font-bold" href="/pages/notre-demarche"

@@ -28433,4 +28433,8 @@
   }
 }
 
+label[for="form-control-default-one"]::after {
+  content: "" !important
+}
+
 /*# sourceMappingURL=montreal.css.map */
