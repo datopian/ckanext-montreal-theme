@@ -1,5 +1,5 @@
 <div class="montreal-theme app-navbar position-relative">
-  <nav class="wide-container position-static">
+  <nav class="wide-container position-static overflow-auto" >
     <div class="font-open-sans text-base">
       <ul class="d-flex align-items-center flex gap-3 mb-0 pl-0">
         <li>
@@ -15,10 +15,10 @@
           >
             {{_('Data')}} <span class="caret"></span>
           </a>
-          <div class="dropdown-menu mt-0">
+          <div class="dropdown-menu mt-0 z-10" style="z-index: 991;">
             <div class="inner py-lg-4 wide-container">
-              <div class="row">
-                <div class="col-8">
+              <div class="row ">
+                <div class="col-12 col-md-8">
                   <h3
                     class="d-flex flex-row items-center gap-3 menu-description"
                   >
@@ -38,8 +38,8 @@
                     </svg>
                     <span>{{_("Datasets")}}</span>
                   </h3>
-                  <div class="row">
-                    <div class="col">
+                  <div class="row ">
+                    <div class="col-12 col-md-6">
                       <ul>
                         <li>
       
@@ -64,7 +64,7 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md-6 my-4 my-md-0">
                       <ul>
                         <li>
                           <a href="{{h.url_for('showcase.search')}}">
@@ -90,7 +90,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                   <div class="encart encart-light">
                     <h4 class="encart-title">{{_("Search")}}</h4>
                     <div class="encart-body">
@@ -127,10 +127,10 @@
           >
             {{_('About')}} <span class="caret"></span>
           </a>
-          <div class="dropdown-menu mt-0">
+          <div class="dropdown-menu mt-0 z-10" style="z-index: 991;">
             <div class="inner py-lg-4 wide-container">
-              <div class="row">
-                <div class="col-8">
+              <div class="row ">
+                <div class="col-12 col-md-8">
                   <div class="row">
                     <div class="col">
                       <h3
@@ -166,7 +166,7 @@
            
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-md-4 mt-4 md:mt-0">
                   <div class="encart encart-light">
                     <h4 class="encart-title">{{_("Contact Us")}}</h4>
                     <div class="encart-body">
