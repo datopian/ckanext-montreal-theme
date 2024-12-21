@@ -126,7 +126,7 @@
                                         <div class="list-group list-group-teaser list-group-complex border-0 pl-0" role="list">
                                             {% for item in items[0:max_per_view] %}
                                             {% set url = h.url_for('resource.read', id=pkg.id if is_activity_archive else pkg.name, resource_id=item.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
-                                                <div class="list-group-item list-group-item-action border-0 pl-0" role="listitem">
+                                                <div class="list-group-item list-group-item-action border-0 pl-0 group" role="listitem">
                                                     <div class="row no-gutters align-items-lg-center gap-2">
                                                         <div class="col-auto list-group-icon align-self-start" style="width: 100px;">
                                                             <span class="badge badge-pill badge-light border-0 ring-0 rounded-sm">{{ item.get("format") }}</span>
@@ -134,13 +134,15 @@
                                                         <div class="col">
                                                             <div class="row no-gutters align-items-lg-center">
                                                                 <div class="col">
-                                                                    <div class="list-group-item-title">{{ item.get('name') }}</div>
+                                                                    <div class="list-group-item-title group-hover:text-gray-900" style="color:#212529!important">{{ item.get('name') }}</div>
                                                                     <div class="list-group-item-content">
                                                                         <div class="list-group-item-infos">
-                                                                            <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified')) }}
-                                                                            <div>
-                                                                                {{ h.format_size(item.get('Size')) or '' }}
-                                                                            </div>
+                                                                            <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
+                                                                            {% if item.get('Size') %}
+                                                                                <div>
+                                                                                    {{ h.format_size(item.get('Size')) or '' }}
+                                                                                </div>
+                                                                            {% endif %}
                                                                         </div>
                                                                     </div>
                                                                 </div>
