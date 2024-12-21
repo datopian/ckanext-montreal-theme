@@ -4,7 +4,9 @@ import ckan.lib.formatters as formatters
 
 from ckan.plugins import toolkit as tk
 
+from ckan.plugins.toolkit import get_action
 
+from datetime import datetime
 
 from ckanext.montreal_theme.model import SearchConfig
 
@@ -141,3 +143,20 @@ def teritories_string(data):
 def get_google_tag():
     gtag = tk.config.get('ckanext.montreal_theme.gtag')
     return gtag
+
+
+def datetime():
+    return datetime
+
+
+
+def get_package_showcases(package_id):
+    try:
+        # Use CKAN's internal action API
+        context = {}
+        data_dict = {"package_id": package_id}
+        showcases = get_action("ckanext_package_showcase_list")(context, data_dict)
+        return showcases
+    except Exception as e:
+        # Log or handle the exception if needed
+        return []

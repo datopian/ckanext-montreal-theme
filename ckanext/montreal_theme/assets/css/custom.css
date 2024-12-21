@@ -221,3 +221,52 @@
 .montreal-searchbar .btn-label{
   color:#212529
 }
+
+.relative:hover .copy-btn{
+  opacity: 1;
+}
+.copy-btn{
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  z-index: 5;
+  right: 0;
+  opacity: 0;
+  transition: .3s opacity;
+}
+
+.montreal-theme .nav-item.active > a:before, .montreal-theme .nav-aside li.active a:before{
+  content: none;
+  display: none!important;
+}
+
+.montreal-theme .nav-tabs .nav-link:hover:not(.disabled):before, 
+.montreal-theme .nav-tabs .nav-link.active:not(.disabled):before, 
+.montreal-theme .nav-tabs .nav-item.show .nav-link:not(.disabled):before{
+  content: " " !important;
+    width: auto;
+    margin-bottom: -1px;
+    max-height: 2px !important;
+    background-color: #097d6c;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block !important;
+    top: auto !important;
+    border: 0;
+}
+
+.markdown-content p{
+  color: #637381;
+}
+
+.app-aside{
+  display: none;
+}
+
+@media (min-width:1024px) {
+  .app-aside{
+    display: block;
+  }
+}
