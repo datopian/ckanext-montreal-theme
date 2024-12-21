@@ -1242,3 +1242,34 @@ msgstr ""
 msgid "License"
 msgstr "Licence d’utilisation"
 
+
+
+#: ckanext/montreal_theme/templates/package/_read.html:373
+msgid "On this page"
+msgstr "Sur cette page"
+
+#: ckanext/montreal_theme/templates/package/_read.html:109
+msgid "Web service"
+msgstr "Service web"
+
+#: ckanext/montreal_theme/templates/package/_read.html:110
+msgid "Map"
+msgstr "Cartes"
+
+#: ckanext/montreal_theme/templates/package/_read.html:111
+msgid "File"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/package/_read.html:224
+#: ckanext/montreal_theme/templates/package/_read.html:492
+msgid "Show more resources"
+msgstr "Afficher plus de ressources"
+
+
+#: ckanext/montreal_theme/templates/package/_read.html:490
+msgid "Show less resources"
+msgstr "Afficher moins de ressources"
+
+#: ckanext/montreal_theme/templates/package/_read.html:108
+msgid "Documentation"
+msgstr ""
