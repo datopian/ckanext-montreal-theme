@@ -33,20 +33,23 @@
   <section class="px-4 mx-auto container">
     {# <------------------ Recently Updated datasets Section ---------------> #}
     <div class="pt-16 pb-16">
-      <div class="flex items-center gap-4 mb-8">
-        <h2 class="text-4xl text-zambezi text-dark font-semibold w-full ">
-          {{ _('Datasets recently updated') }}
-        </h2>
+      <div class="flex flex-col md:flex-row items-center gap-4 mb-8">
+        <div class="montreal-theme w-full">
+          <h2 class="text-zambezi text-dark font-semibold w-full ">
+            {{ _('Datasets recently updated') }}
+          </h2>
+        </div>
+     
         {% set groups = h.all_groups() %} {% if groups|length > 0 %}
           <a
-            class="view_all block w-fit text-center bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full"
+            class="max-w-full view_all block w-fit text-center bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border-1 border-gray-500 hover:border-transparent rounded-full"
             href="{{ h.url_for('dataset.search') }}"
             style="width:340px"
             >{{ _('View all datasets') }}</a
           >
         {% endif %}
       </div>
-      <div class="grid-cols-3 grid gap-4">
+      <div class=" grid-cols-1 md:grid-cols-3 grid gap-4">
         {% block featured_dataset %} {% snippet
         'home/snippets/latest_datasets.html' %} {% endblock %}
       </div>
