@@ -1,5 +1,5 @@
 {% set image_url = h.get_value_from_showcase_extras(showcase.extras, 'image_url') %}
-<div class="block md:w-1/3 justify-center p-2">
+<div class="block w-full md:w-1/3 justify-center p-2">
     <a href="{{ h.url_for('showcase.read', id=showcase.name) }}" class="block hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl">
         <div class="card-img">
             {% if image_url and not image_url.startswith('http') %}
