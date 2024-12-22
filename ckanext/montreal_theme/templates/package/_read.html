@@ -127,8 +127,8 @@
                                             {% for item in items[0:max_per_view] %}
                                             {% set url = h.url_for('resource.read', id=pkg.id if is_activity_archive else pkg.name, resource_id=item.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
                                                 <div class="list-group-item list-group-item-action border-0 pl-0 group" role="listitem">
-                                                    <div class="row no-gutters align-items-lg-center gap-2">
-                                                        <div class="col-auto list-group-icon align-self-start" style="width: 100px;">
+                                                    <div class="row  no-gutters align-items-lg-center gap-2">
+                                                        <div class="col-12 md:col-auto list-group-icon align-self-start" style="width: 100px;">
                                                             <span class="badge badge-pill badge-light border-0 ring-0 rounded-sm">{{ item.get("format") }}</span>
                                                         </div>
                                                         <div class="col">
@@ -349,7 +349,7 @@
                                 {% endif %}
 
 
-                                <div class=" flex mt-12 mb-8 p-3 px-5 items-center border rounded-lg border-gray-400 gap-20" style="border-top-width: 1px;">
+                                <div class=" flex flex-col md:flex-row mt-12 mb-8 py-3 px-2 md:px-5 items-center border rounded-lg border-gray-400 gap-20" style="border-top-width: 1px;">
                                     <div class="">
                                         {% set org = pkg.get('organization') %}
                                         {% set image_url = org.get('image_url') if org else '' %}
@@ -361,7 +361,7 @@
                                         {% endif %}
                                         <img class="inline-block w-full" src="{{ image_url }}" style="width: 360px; object-fit: fill;">
                                     </div>
-                                    <div class="flex flex-col w-3/4">
+                                    <div class="flex flex-col md:w-3/4">
                                         <h4 class="">
                                             <a href="{{ h.url_for('organization.read', id=org.name) }}" class="text-dark decoration-none">{{ org.title }}</a>
                                         </h4>
