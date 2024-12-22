@@ -20,9 +20,9 @@
         </div>
         <div class="col-12">
           <form {% if form_id %}id="{{ form_id }}" {% endif %}  method="get"  action="{{args.selectedSearchOption}}" class="bg-white p-2 mb-0">
-            <div class="d-flex w-100 gap-4 align-items-end">
-              <div class="d-flex gap-4 w-100">
-                <div class="form-group mb-0">
+            <div class="d-flex w-100 gap-4 align-items-end flex flex-col md:flex-row">
+              <div class="flex gap-4 w-full flex-col md:flex-row">
+                <div class="form-group mb-0 w-full" style="max-width: 100%;">
                   <label for="form-control-default-one">{{_("Search")}}</label>
                   <div class="input-group-icon input-group-icon-left">
                     <input
@@ -38,7 +38,7 @@
                   </div>
 
                 </div>
-                <div class="form-group mb-0">
+                <div class="form-group mb-0 w-full" style="max-width: 100%;">
                   <label for="form-control-default-one">{{_("Type")}}</label>
                   <select class="custom-select" id="" required>
                     <option value="/{{current_lang}}/dataset" 
@@ -93,7 +93,7 @@
 
 {% macro search_bar() %}
 {% set current_lang = request.environ.CKAN_LANG %}
-  <div class="montreal-searchbar">
+  <div class="montreal-searchbar mt-2 md:mt-0">
     <form class="m-0" action="/{{current_lang}}/dataset">
       <button type="button" class="btn btn-squared btn-icon-left py-0 pr-0" >
         <span class="icon icon-search" aria-hidden="true"></span>
@@ -104,13 +104,13 @@
           <button type="submit" class="m-0 cursor-pointer position-absolute" style="cursor: pointer!important; z-index: 10; left:8px;">
             <span class="icon icon-search" aria-hidden="true" style="width: 24px;"></span>
           </button>
-            <input type="text" class="form-control rounded-0 pr-4 pl-5" name="q" placeholder="" >
+            <input type="text" class="form-control rounded-0 pr-4 pl-5" name="q" placeholder="" style="width: 100%; ">
             
           
-          <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:160px">
+          <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:130px">
             <i class="icon icon-x text-dark"></i>
           </span> 
-          <select class="form-control rounded-0 m-0" style="width:100%;max-width:160px">
+          <select class="form-control rounded-0 m-0" style="width:160px;max-width:160px;">
             <option value="/{{current_lang}}/dataset">{{_("Datasets")}}</option>
             <option value="/{{current_lang}}/blog">{{_("News")}}</option>
             <option value="/{{current_lang}}/showcase">{{_("Applications")}}</option>
