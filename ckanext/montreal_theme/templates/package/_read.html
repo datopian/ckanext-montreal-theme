@@ -134,9 +134,9 @@
                                                                     <div class="list-group-item-content">
                                                                         <div class="list-group-item-infos">
                                                                             <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
-                                                                            {% if item.get('Size') %}
+                                                                            {% if item.get('size') %}
                                                                                 <div>
-                                                                                    {{ h.format_size(item.get('Size')) or '' }}
+                                                                                    {{ h.format_size(item.get('size')) or '' }}
                                                                                 </div>
                                                                             {% endif %}
                                                                         </div>
