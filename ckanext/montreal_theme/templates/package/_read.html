@@ -43,11 +43,7 @@
                                     <h1 class="h2">
                                         {{pkg.get('title')}}
                                     </h1>
-                                    <div>
-                                        <span class="">{{ _('Published by') }}</span>
-                                        {% set href = h.url_for('organization.read', id=pkg_org.get('name')) if pkg_org else '' %}
-                                        <a href="{{ href }}" class="">{{ pkg_org.get('title') if pkg_org else '' }}</a>
-                                    </div>
+                     
                                 </div>
                             </div>
                         </div>
@@ -86,11 +82,11 @@
                             <a href="#tab-groups" class="nav-link m-0 " role="tab" data-toggle="tab">{{ _('Groups') }}</a>
                         </li>
                       {% endif %}
-                      {% if apps|length > 0 %}
+                   
                         <li class="nav-item " role="presentation">
                             <a href="#tab-apps" class="nav-link m-0 " role="tab" data-toggle="tab">{{ _('Applications') }}</a>
                         </li>
-                      {% endif %}
+                  
                     </ul>
                 </nav>
             </div>
@@ -113,7 +109,7 @@
                                 {% set resources = pkg.get('resources') %}
                                 {% set max_per_view = 5 %}
                                 {% for item in resources %}
-                                    {% set resource_type = item.get('resource_type') %}
+                                    {% set resource_type = item.get('resource_type') or "donnees" %}
                                     {% if resource_type not in grouped_data %}
                                         {% set _ = grouped_data.update({resource_type: []}) %}
                                     {% endif %}
@@ -126,7 +122,7 @@
                                         <div class="list-group list-group-teaser list-group-complex border-0 pl-0" role="list">
                                             {% for item in items[0:max_per_view] %}
                                             {% set url = h.url_for('resource.read', id=pkg.id if is_activity_archive else pkg.name, resource_id=item.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
-                                                <div class="list-group-item list-group-item-action border-0 pl-0 group" role="listitem">
+                                                <div class="list-group-item list-group-item-action border-0 pl-0 group" style="cursor:auto" role="listitem">
                                                     <div class="row  no-gutters align-items-lg-center gap-2">
                                                         <div class="col-12 md:col-auto list-group-icon align-self-start" style="width: 100px;">
                                                             <span class="badge badge-pill badge-light border-0 ring-0 rounded-sm">{{ item.get("format") }}</span>
@@ -138,9 +134,9 @@
                                                                     <div class="list-group-item-content">
                                                                         <div class="list-group-item-infos">
                                                                             <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
-                                                                            {% if item.get('Size') %}
+                                                                            {% if item.get('size') %}
                                                                                 <div>
-                                                                                    {{ h.format_size(item.get('Size')) or '' }}
+                                                                                    {{ h.format_size(item.get('size')) or '' }}
                                                                                 </div>
                                                                             {% endif %}
                                                                         </div>
@@ -175,47 +171,47 @@
                                                 <div class="list-group list-group-teaser list-group-complex border-0 pl-0" role="list">
                                                     {% for item in items[max_per_view:] %}
                                                     {% set url = h.url_for('resource.read', id=pkg.id if is_activity_archive else pkg.name, resource_id=item.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
-                                                        <div class="list-group-item list-group-item-action border-0 pl-0" role="listitem">
-                                                            <div class="row no-gutters align-items-lg-center gap-2">
-                                                                <div class="col-auto list-group-icon align-self-start" style="width: 100px;">
-                                                                    <span class="badge badge-pill badge-light border-0 ring-0 rounded-sm">{{ item.get("format") }}</span>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row no-gutters align-items-lg-center">
-                                                                        <div class="col">
-                                                                            <div class="list-group-item-title">{{ item.get('name') }}</div>
-                                                                            <div class="list-group-item-content">
-                                                                                <div class="list-group-item-infos">
-                                                                                    <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified')) }}
+                                                    <div class="list-group-item list-group-item-action border-0 pl-0 group" style="cursor:auto" role="listitem">
+                                                        <div class="row  no-gutters align-items-lg-center gap-2">
+                                                            <div class="col-12 md:col-auto list-group-icon align-self-start" style="width: 100px;">
+                                                                <span class="badge badge-pill badge-light border-0 ring-0 rounded-sm">{{ item.get("format") }}</span>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row no-gutters align-items-lg-center">
+                                                                    <div class="col">
+                                                                        <div class="list-group-item-title group-hover:text-gray-900" style="color:#212529!important">{{ item.get('name') }}</div>
+                                                                        <div class="list-group-item-content">
+                                                                            <div class="list-group-item-infos">
+                                                                                <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
+                                                                                {% if item.get('Size') %}
                                                                                     <div>
                                                                                         {{ h.format_size(item.get('Size')) or '' }}
                                                                                     </div>
-                                                                                </div>
+                                                                                {% endif %}
                                                                             </div>
                                                                         </div>
-                                                            
                                                                     </div>
+                                                         
                                                                 </div>
-                                                                <div class="col-auto ml-2 dropdown">
-                                                                    <button class="btn btn-secondary flex items-center btn-squared btn-icon-right btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Button aria label">
-                                                                        Explorer
-                                                                        <span class="icon icon-chevron-down flex items-center" style="font-size: 8px;" aria-hidden="true"></span>
-                                                                    </button>
-                                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMoreVertical-1">
-                                                                        <a class="dropdown-item" href="{{ item.get('url') }}" download>
-                                                                            <span class="icon icon-download w-auto" aria-hidden="true"></span>
-                                                                            {{ _('Download') }}
+                                                            </div>
+                                                            <div class="col-auto ml-2">
+                                                                <div class="flex items-center gap-3 justify-end">
+                                                                    <a class="p-1" title="{{_('Download')}}" href="{{ item.get('url') }}" style="width: 20px;" download>
+                                                                        <svg class="fill-current w-6 h-6 hover:rounded hover:bg-sarcelle-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="icon">
+                                                                            <path fill-rule="evenodd" d="M12.376 15.927a1 1 0 01-1.083-.22l-5-5a1 1 0 011.414-1.414L11 12.586V3a1 1 0 012 0v12a1 1 0 01-.61.921zM20 15a1 1 0 012 0v4a3 3 0 01-3 3H5a3 3 0 01-3-3v-4a1 1 0 012 0v4a1 1 0 001 1h14a1 1 0 001-1v-4zm-3.707-5.707a1 1 0 011.414 1.414l-2 2a1 1 0 01-1.414-1.414l2-2z"></path>
+                                                                        </svg>
+                                                                    </a>
+                                                                    {% if item.get('has_views')%}
+                                                                        <a  class="p-1" href="{{ url }}" target="_blank" style="width: 20px;" title="{{_('Preview')}}">
+                                                                            <svg class="hover:rounded hover:bg-sarcelle-light"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="icon">
+                                                                                <path fill-rule="evenodd" d="M2.574 12.707c.575.89 1.254 1.781 2.03 2.61C6.777 17.631 9.255 19 12 19c2.745 0 5.224-1.368 7.395-3.684A18.513 18.513 0 0021.86 12a18.513 18.513 0 00-2.464-3.316C17.224 6.368 14.745 5 12 5 9.255 5 6.776 6.368 4.605 8.684A18.513 18.513 0 002.14 12c.126.218.27.455.433.707zM.106 11.553c.14-.281.404-.75.788-1.346a20.492 20.492 0 012.251-2.89C5.661 4.631 8.62 3 12 3c3.38 0 6.339 1.632 8.855 4.316a20.492 20.492 0 012.25 2.891c.385.596.649 1.065.79 1.346a1 1 0 010 .894c-.141.281-.405.75-.79 1.346a20.492 20.492 0 01-2.25 2.89C18.339 19.369 15.38 21 12 21c-3.38 0-6.339-1.632-8.855-4.316a20.492 20.492 0 01-2.25-2.891 15.188 15.188 0 01-.79-1.346 1 1 0 010-.894zM12 16a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 100-4 2 2 0 000 4z"></path>
+                                                                            </svg>
                                                                         </a>
-                                                                        {% if item.get('has_views')%}
-                                                                            <a class="dropdown-item" href="{{url}}">
-                                                                                <span class="icon icon-eye w-auto" aria-hidden="true"></span>
-                                                                                {{ _('Preview') }}
-                                                                            </a>
-                                                                        {% endif %}
-                                                                    </div>
+                                                                    {% endif %}
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
                                                     {% endfor %}
                                                 </div>
                                             </div>
@@ -280,6 +276,8 @@
                             </div>
 
                             <div id="additional-info" class="mt-5">
+
+
                                {% set author = pkg.get('author') %}
                                {% set temporal_coverage = 
                                     pkg.get('temporal') 
@@ -301,14 +299,14 @@
                                 {% if author %}
                                     <div class="">
                                         <span class="font-semibold text-element-primary h5">{{ _('Publisher') }}</span>
-                                        <p class="text-secondary">{{ author }}</p>
+                                        <p class="text-secondary text-sm">{{ author }}</p>
                                     </div>
                                 {% endif %}
 
                                 {% if temporal_coverage %}
                                     <div class="">
                                         <span class="font-semibold text-element-primary h5">{{ _('Temporal coverage') }}</span>
-                                        <div class="text-secondary">{{ h.render_content(temporal_coverage) }}</div>
+                                        <div class="text-secondary text-sm">{{ h.render_content(temporal_coverage) }}</div>
                                     </div>
                                 {% endif %}
 
@@ -322,7 +320,13 @@
                                 {% if update_frequency %}
                                     <div class="">
                                         <span class="font-semibold text-element-primary h5">{{  _('Update frequency') }}</span>
-                                        <div class="text-secondary">{{ h.render_content(update_frequency) }}</div>
+                                        <div class="text-secondary text-sm">
+                                            {% for field in schema.dataset_fields %}
+                                                {% if field.field_name == "update_frequency" %}
+                                                   <p> {%- snippet 'scheming/snippets/display_field.html', field=field, data=pkg_dict, schema=schema -%}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                 {% endif %}
 
@@ -421,32 +425,37 @@
                         </div>
                     </div>
                 {% endif %}
-                {% if(apps|length > 0) %}
-                    <div class="tab-pane fade" id="tab-apps" role="tabpanel" >
-                        <div class=" block flex w-full flex-row flex-wrap">
-                            {% for showcase in apps %}
-                            {% set image_url  = showcase.image_url%}
-                            <div class="block md:w-1/3 justify-center p-2 ">
-                                <a href="{{ h.url_for('showcase.read', id=showcase.name) }}" class="border-1 border-gray-300 block hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl">
-                                    <div class="card-img px-3">
-                                        {% if image_url and not image_url.startswith('http') %}
-                                            <img class="rounded-t" src="/uploads/showcase/{{ image_url }}" alt="{{ showcase.title }}" style="width: calc(100% + 2px); height: 205px; object-fit: cover;" loading="lazy">
-                                        {% else %}
-                                            <img class="rounded-t" src="{{ image_url }}" alt="{{ showcase.title }}" loading="lazy" style="width: calc(100% + 2px); height: 205px; object-fit: cover;" loading="lazy">
-                                        {% endif %}
-                                    </div>
-                                    <div class="card-body border-t-1 border-gray-300 p-6" style="height: 220px;">
-                                        <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                                            {{ showcase.title }}
-                                        </p>
-                                        <p class="text-gray-600 font-open-sans font-normal">{{ _('by') }} {{ showcase.author }}</p>
-                                    </div>
-                                </a>
-                            </div>   
-                            {% endfor %}
-                        </div>
+                
+                <div class="tab-pane fade" id="tab-apps" role="tabpanel" >
+                    <div class=" block flex w-full flex-row flex-wrap">
+                       
+                        {% if(apps|length == 0) %}
+                            {{_("No applications are linked to this dataset.")}} <a class="ml-1 text-primary underline" href="{{ h.url_for('montreal_theme.contact_form') }}">{{_("Submit yours")}}</a>
+                        {% endif %}
+
+                        {% for showcase in apps %}
+                        {% set image_url  = showcase.image_url%}
+                        <div class="block md:w-1/3 justify-center p-2 ">
+                            <a href="{{ h.url_for('showcase.read', id=showcase.name) }}" class="border-1 border-gray-300 block hover:border-1 hover:border-solid hover:border-transparent hover:bg-white hover:shadow-xl">
+                                <div class="card-img px-3">
+                                    {% if image_url and not image_url.startswith('http') %}
+                                        <img class="rounded-t" src="/uploads/showcase/{{ image_url }}" alt="{{ showcase.title }}" style="width: calc(100% + 2px); height: 205px; object-fit: cover;" loading="lazy">
+                                    {% else %}
+                                        <img class="rounded-t" src="{{ image_url }}" alt="{{ showcase.title }}" loading="lazy" style="width: calc(100% + 2px); height: 205px; object-fit: cover;" loading="lazy">
+                                    {% endif %}
+                                </div>
+                                <div class="card-body border-t-1 border-gray-300 p-6" style="height: 220px;">
+                                    <p class="text-xl font-bold text-black  font-open-sans font-medium mb-4" style="display: block;display: -webkit-box;max-width: 100%;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
+                                        {{ showcase.title }}
+                                    </p>
+                                    <p class="text-gray-600 font-open-sans font-normal">{{ _('by') }} {{ showcase.author }}</p>
+                                </div>
+                            </a>
+                        </div>   
+                        {% endfor %}
                     </div>
-                {% endif %}
+                </div>
+           
             </div>
 
             <script>
