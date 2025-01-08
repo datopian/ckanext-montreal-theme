@@ -109,7 +109,7 @@
                                 {% set resources = pkg.get('resources') %}
                                 {% set max_per_view = 5 %}
                                 {% for item in resources %}
-                                    {% set resource_type = item.get('resource_type') %}
+                                    {% set resource_type = item.get('resource_type') or "donnees" %}
                                     {% if resource_type not in grouped_data %}
                                         {% set _ = grouped_data.update({resource_type: []}) %}
                                     {% endif %}
