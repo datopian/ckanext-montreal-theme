@@ -438,8 +438,8 @@ msgstr ""
 
 #: ckanext/montreal_theme/templates/group/index.html:83
 #: ckanext/montreal_theme/templates/home/collections.html:43
-#: ckanext/montreal_theme/templates/home/layout4.html:135
-#: ckanext/montreal_theme/templates/home/layout4.html:139
+#: ckanext/montreal_theme/templates/home/layout4.html:132
+#: ckanext/montreal_theme/templates/home/layout4.html:136
 #: ckanext/montreal_theme/templates/organization/index.html:82
 msgid "Read our approach"
 msgstr ""
