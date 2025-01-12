@@ -270,3 +270,7 @@
     display: block;
   }
 }
+
+.data-explorer ul.nav.nav-tabs.nav-tabs-plain>li[data-id]{
+  display: none!important;
+}

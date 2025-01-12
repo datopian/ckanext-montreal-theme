@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-montreal-theme 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-07 16:58+0000\n"
+"POT-Creation-Date: 2025-01-12 12:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -496,7 +496,7 @@ msgid "View all"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/home/snippets/applications.html:15
-#: ckanext/montreal_theme/templates/package/_read.html:443
+#: ckanext/montreal_theme/templates/package/_read.html:451
 msgid "by"
 msgstr ""
 
@@ -658,12 +658,12 @@ msgstr ""
 #: ckanext/montreal_theme/templates/package/_read.html:78
 #: ckanext/montreal_theme/templates/package/_resource_read.html:10
 #: ckanext/montreal_theme/templates/package/resource_read.html:179
-#: ckanext/montreal_theme/templates/package/resource_read.html:189
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
 msgid "Dataset"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/_read.html:101
-#: ckanext/montreal_theme/templates/package/_read.html:384
+#: ckanext/montreal_theme/templates/package/_read.html:392
 msgid "Resources"
 msgstr ""
 
@@ -697,18 +697,18 @@ msgid "Preview"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/_read.html:221
-#: ckanext/montreal_theme/templates/package/_read.html:492
+#: ckanext/montreal_theme/templates/package/_read.html:500
 msgid "Show more resources"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/_read.html:230
-#: ckanext/montreal_theme/templates/package/_read.html:387
+#: ckanext/montreal_theme/templates/package/_read.html:395
 #: ckanext/montreal_theme/templates/scheming/package/read.html:13
 msgid "Methodology"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/_read.html:247
-#: ckanext/montreal_theme/templates/package/_read.html:390
+#: ckanext/montreal_theme/templates/package/_read.html:398
 msgid "Territories"
 msgstr ""
 
@@ -717,58 +717,58 @@ msgid "Montreal"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/_read.html:267
-#: ckanext/montreal_theme/templates/package/_read.html:393
+#: ckanext/montreal_theme/templates/package/_read.html:401
 #: ckanext/montreal_theme/templates/showcase/_read.html:81
 msgid "Keywords"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:295
-#: ckanext/montreal_theme/templates/package/resource_read.html:257
+#: ckanext/montreal_theme/templates/package/_read.html:297
+#: ckanext/montreal_theme/templates/package/resource_read.html:258
 msgid "Additional Information"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:299
-#: ckanext/montreal_theme/templates/package/resource_read.html:263
+#: ckanext/montreal_theme/templates/package/_read.html:301
+#: ckanext/montreal_theme/templates/package/resource_read.html:264
 msgid "Publisher"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:306
+#: ckanext/montreal_theme/templates/package/_read.html:308
 msgid "Temporal coverage"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:313
+#: ckanext/montreal_theme/templates/package/_read.html:315
 msgid "Source (URL)"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:320
+#: ckanext/montreal_theme/templates/package/_read.html:322
 msgid "Update frequency"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:329
+#: ckanext/montreal_theme/templates/package/_read.html:337
 msgid "Descriptive Information Last Updated"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:340
+#: ckanext/montreal_theme/templates/package/_read.html:348
 msgid "Date the dataset was first added"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:380
+#: ckanext/montreal_theme/templates/package/_read.html:388
 msgid "On this page"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:396
+#: ckanext/montreal_theme/templates/package/_read.html:404
 msgid "Additional Info"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:425
+#: ckanext/montreal_theme/templates/package/_read.html:433
 msgid "No applications are linked to this dataset."
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:425
+#: ckanext/montreal_theme/templates/package/_read.html:433
 msgid "Submit yours"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/_read.html:490
+#: ckanext/montreal_theme/templates/package/_read.html:498
 msgid "Show less resources"
 msgstr ""
 
@@ -813,59 +813,66 @@ msgid "APA (7th Edition)"
 msgstr ""
 
 #: ckanext/montreal_theme/templates/package/resource_read.html:179
-#: ckanext/montreal_theme/templates/package/resource_read.html:189
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
 msgid "Open Data City of Montreal"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:187
+#: ckanext/montreal_theme/templates/package/resource_read.html:184
+#: ckanext/montreal_theme/templates/package/resource_read.html:193
+#: ckanext/montreal_theme/templates/package/resource_read.html:202
+#: ckanext/montreal_theme/templates/package/resource_read.html:211
+msgid "Copy"
+msgstr ""
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:188
 msgid "IEEE"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:189
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
 msgid "Available"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:189
+#: ckanext/montreal_theme/templates/package/resource_read.html:190
 msgid "consulted on"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:196
+#: ckanext/montreal_theme/templates/package/resource_read.html:197
 msgid "Newspaper Article"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:198
+#: ckanext/montreal_theme/templates/package/resource_read.html:199
 msgid "Data in this news are from the dataset"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:198
+#: ckanext/montreal_theme/templates/package/resource_read.html:199
 msgid "from City of Montreal’s Open Data Website"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:205
+#: ckanext/montreal_theme/templates/package/resource_read.html:206
 msgid "Other uses"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:207
+#: ckanext/montreal_theme/templates/package/resource_read.html:208
 msgid "With data from"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:207
+#: ckanext/montreal_theme/templates/package/resource_read.html:208
 msgid "taken from City of Montreal’s Open Data Website"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:273
+#: ckanext/montreal_theme/templates/package/resource_read.html:274
 msgid "Format"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:282
+#: ckanext/montreal_theme/templates/package/resource_read.html:283
 msgid "Metadata last updated"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:285
+#: ckanext/montreal_theme/templates/package/resource_read.html:286
 msgid "unknown"
 msgstr ""
 
-#: ckanext/montreal_theme/templates/package/resource_read.html:292
+#: ckanext/montreal_theme/templates/package/resource_read.html:293
 msgid "License"
 msgstr ""
 
