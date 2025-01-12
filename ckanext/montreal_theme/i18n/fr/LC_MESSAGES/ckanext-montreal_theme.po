@@ -1288,3 +1288,10 @@ msgstr "Aucune application n'est liée à cet ensemble de données."
 #: ckanext/montreal_theme/templates/package/_read.html:425
 msgid "Submit yours"
 msgstr "Proposer la votre"
+
+#: ckanext/montreal_theme/templates/package/resource_read.html:184
+#: ckanext/montreal_theme/templates/package/resource_read.html:193
+#: ckanext/montreal_theme/templates/package/resource_read.html:202
+#: ckanext/montreal_theme/templates/package/resource_read.html:211
+msgid "Copy"
+msgstr "Copier"
