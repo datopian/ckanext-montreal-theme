@@ -104,12 +104,12 @@
           <button type="submit" class="m-0 cursor-pointer position-absolute" style="cursor: pointer!important; z-index: 10; left:8px;">
             <span class="icon icon-search" aria-hidden="true" style="width: 24px;"></span>
           </button>
+          <div class="position-relative">
             <input type="text" class="form-control rounded-0 pr-4 pl-5" name="q" placeholder="" style="width: 100%; ">
-            
-          
-          <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:130px">
-            <i class="icon icon-x text-dark"></i>
-          </span> 
+            <span class="p-1 text-dark cursor-pointer top-0 montreal-searchbar-close position-absolute" style="z-index: 10; right:0">
+              <i class="icon icon-x text-dark"></i>
+            </span> 
+          </div>
           <select class="form-control rounded-0 m-0" style="width:160px;max-width:160px;">
             <option value="/{{current_lang}}/dataset">{{_("Datasets")}}</option>
             <option value="/{{current_lang}}/blog">{{_("News")}}</option>
