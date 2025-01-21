@@ -185,7 +185,7 @@
                                                                                 <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
                                                                                 {% if item.get('Size') %}
                                                                                     <div>
-                                                                                        {{ h.format_size(item.get('Size')) or '' }}
+                                                                                        {{ h.format_size(item.get('size')) or '' }}
                                                                                     </div>
                                                                                 {% endif %}
                                                                             </div>
