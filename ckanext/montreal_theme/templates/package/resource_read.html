@@ -87,7 +87,7 @@
             <h3 class="text-xl text-black h3 font-bold m-0">{{_("Explore data")}}</h3>
             <ul>
                 <div class="">
-                    <li class="mb-6">
+                    <li class="mb-0">
                         
                         <div class="data-explorer">
                             <div class="data-explorer">
@@ -102,7 +102,7 @@
                 </div>
             </ul>
         </div>
-        {% if res.datastore_active %}
+        {# if res.datastore_active %}
             <section class="module mb-8 lg:mx-2">
                 <div class="montreal-theme lg:-ml-2">
                     <h3 class="h3 " >
@@ -164,9 +164,8 @@
                         {% endfor %}
                     </div>
                 </div>
-        
             </section>
-        {% endif %}
+        {% endif #}
     </div>
     <div class="montreal-theme lg:w-2/3">
         <h3 class="h3 ">
