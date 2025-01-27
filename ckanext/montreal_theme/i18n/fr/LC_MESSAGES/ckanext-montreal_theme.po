@@ -1136,7 +1136,7 @@ msgstr "Découvrir les données selon son organisation d’origine"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:75
 msgid "See which datasets are used in third-party applications"
-msgstr "Voyez quels jeux de données sont utilisés dans les applications tiers"
+msgstr "Voyez quels jeux de données sont utilisés dans les applications tierces"
 
 #: ckanext/montreal_theme/templates/navigation/main-menu.html:85
 msgid "Browse datasets by publishers"
