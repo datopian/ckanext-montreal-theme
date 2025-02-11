@@ -137,6 +137,7 @@
                                                                             ITEM: {{ item }}
                                                                             ITEM SIZE: {{ item.get('size') }}
                                                                             {% if item.get('size') %}
+                                                                                ITEM SIZE PASSED
                                                                                 <div>
                                                                                     {{ h.format_size(item.get('size')) or '' }}
                                                                                 </div>
@@ -188,6 +189,7 @@
                                                                                 ITEM 2: {{ item }}
                                                                                 ITEM SIZE 2: {{ item.get('size') }}
                                                                                 {% if item.get('size') %}
+                                                                                    ITEM SIZE 2 PASSED
                                                                                     <div>
                                                                                         {{ h.format_size(item.get('size')) or '' }}
                                                                                     </div>
