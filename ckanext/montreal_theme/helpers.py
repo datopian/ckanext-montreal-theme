@@ -1,6 +1,7 @@
 import ckan.plugins as p
 import ckan.model as model
 import ckan.lib.formatters as formatters
+import logging
 
 from ckan.plugins import toolkit as tk
 
@@ -13,6 +14,8 @@ from ckanext.montreal_theme.model import SearchConfig
 import json
 
 g = tk.g
+
+log = logging.getLogger(__name__)
 
 def is_user_editor_no_arg():
        
@@ -113,6 +116,7 @@ def homepage_search_configs():
 
 
 def format_size(size):
+    log.error("DEBUGGING size: %s", size)
 
     if size == None:
         value = "--"

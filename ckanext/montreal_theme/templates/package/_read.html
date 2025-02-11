@@ -134,6 +134,8 @@
                                                                     <div class="list-group-item-content">
                                                                         <div class="list-group-item-infos">
                                                                             <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
+                                                                            ITEM: {{ item }}
+                                                                            ITEM SIZE: {{ item.get('size') }}
                                                                             {% if item.get('size') %}
                                                                                 <div>
                                                                                     {{ h.format_size(item.get('size')) or '' }}
@@ -183,6 +185,8 @@
                                                                         <div class="list-group-item-content">
                                                                             <div class="list-group-item-infos">
                                                                                 <span class="font-semibold">{{ _('Last Changed') }}:</span> {{ h.time_ago_from_timestamp(item.get('last_modified') or item.get('metadata_modified')) }}
+                                                                                ITEM 2: {{ item }}
+                                                                                ITEM SIZE 2: {{ item.get('size') }}
                                                                                 {% if item.get('size') %}
                                                                                     <div>
                                                                                         {{ h.format_size(item.get('size')) or '' }}
